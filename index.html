@@ -243,21 +243,44 @@ html {
 .hud-animate {
     animation: hudGlitch 0.4s ease-out forwards;
 }
+
+.portal-btn {
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    background: rgba(0, 242, 255, 0.05);
+    color: var(--cyan) !important;
+}
+
+.portal-btn:hover {
+    background: var(--cyan);
+    color: #0d0d0d !important;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    transform: translateY(-2px);
+    border-color: var(--cyan);
+}
         
         
     </style>
 </head>
 <body>
 
-    <nav class="navbar" class="reveal">
+    <nav class="navbar">
     <div class="nav-container">
-        <div class="nav-logo">
-    <img src="logo.svg" class="logo-animate" alt="Sentry Vector Media">
-</div>
+        <a href="#" class="nav-logo">
+            <img src="logo.svg" alt="Sentry Vector Media">
+        </a>
         <div class="nav-links">
-            <a href="#case-study">VECTOR CASE STUDY</a>
-            <a href="#services">PROTOCOLS</a>
-            <a href="mailto:your-email@example.com" class="nav-cta">INITIALIZE AUDIT</a>
+            <a href="#work">Deployments</a>
+            <a href="#protocols">Protocols</a>
+            <a href="#about-preview">About</a>
+            <a href="#" class="portal-btn">
+                <span style="font-size: 0.8rem; margin-right: 5px;">&#128274;</span> CLIENT PORTAL
+            </a>
         </div>
     </div>
 </nav>
