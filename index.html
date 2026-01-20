@@ -215,13 +215,41 @@
     animation: cyanPulse 3s infinite ease-in-out;
 }
 
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Base state for all animated sections */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Active state triggered by JavaScript */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section-specific "Glitch" entry for the Sentry look */
+@keyframes hudGlitch {
+    0% { opacity: 0; transform: skewX(-10deg); }
+    50% { opacity: 0.5; transform: skewX(10deg); }
+    100% { opacity: 1; transform: skewX(0); }
+}
+
+.hud-animate {
+    animation: hudGlitch 0.4s ease-out forwards;
+}
         
         
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" class="reveal">
     <div class="nav-container">
         <div class="nav-logo">
     <img src="logo.svg" class="logo-animate" alt="Sentry Vector Media">
@@ -234,7 +262,7 @@
     </div>
 </nav>
 
-    <section class="hero">
+    <section class="hero" class="reveal">
         <div class="hud-bracket top-left"></div>
         <div class="hud-bracket top-right"></div>
         <div class="hud-bracket bottom-left"></div>
@@ -246,11 +274,27 @@
             <button class="cta-button" onclick="window.location.href='mailto:your-email@example.com'">Initialize Audit</button>
         </div>
     </section>
+<script>
+    // Force immediate check on load
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
 
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("load", reveal); // Runs it once immediately on page load
+</script>
 </body>
 </html>
 
-<section id="case-study" style="background: #0d0d0d; padding: 100px 20px; color: #fff; border-top: 1px solid #333;">
+<section id="case-study" class="reveal" style="background: #0d0d0d; padding: 100px 20px; color: #fff; border-top: 1px solid #333;">
     <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
         <div style="flex: 1; min-width: 300px;">
             <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 2px;">Vector Case Study</h2>
@@ -269,7 +313,7 @@
     </div>
 </section>
 
-<section id="services" style="background: #1a1a1a; padding: 100px 20px; text-align: center;">
+<section id="services" class="reveal" style="background: #1a1a1a; padding: 100px 20px; text-align: center;">
     <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px;">Service Protocols</h2>
     <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
         
@@ -291,7 +335,7 @@
     </div>
 </section>
 
-<section id="case-study" style="padding: 100px 20px; background: var(--grey);">
+<section id="case-study" class="reveal" style="padding: 100px 20px; background: var(--grey);">
     <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
         <div style="flex: 1; min-width: 300px;">
             <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 2px;">Vector Case Study</h2>
@@ -310,7 +354,7 @@
     </div>
 </section>
 
-<section id="media" style="background: #1a1a1a; padding: 100px 20px; border-top: 1px solid #333;">
+<section id="media" class="reveal" style="background: #1a1a1a; padding: 100px 20px; border-top: 1px solid #333;">
     <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
         <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px;">Media Production Vector</h2>
         
@@ -344,7 +388,7 @@
     </div>
 </section>
 
-<section id="protocols" style="background: #050505; padding: 100px 20px; border-top: 1px solid #333;">
+<section id="protocols" class="reveal" style="background: #050505; padding: 100px 20px; border-top: 1px solid #333;">
     <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
         <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px;">Service Protocols</h2>
         
@@ -384,7 +428,7 @@
     </div>
 </section>
 
-<section id="audit" style="background: #0d0d0d; padding: 100px 20px; border-top: 1px solid #333;">
+<section id="audit" class="reveal" style="background: #0d0d0d; padding: 100px 20px; border-top: 1px solid #333;">
     <div style="max-width: 600px; margin: 0 auto; text-align: center;">
         <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px;">Initialize Technical Audit</h2>
         <p style="color: #ccc; margin-bottom: 40px;">Request a deep-dive analysis of your infrastructure’s security and performance vector.</p>
@@ -402,7 +446,7 @@
     </div>
 </section>
 
-<footer style="background: #050505; padding: 60px 20px; border-top: 1px solid #00f2ff; text-align: center;">
+<footer class="reveal" style="background: #050505; padding: 60px 20px; border-top: 1px solid #00f2ff; text-align: center;">
     <div style="max-width: 1200px; margin: 0 auto;">
         <img src="logo.svg" alt="Sentry Vector Media" style="width: 180px; height: auto; filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4)); margin-bottom: 25px;">
         <p style="color: #666; font-size: 0.9rem; margin-bottom: 30px;">
