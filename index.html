@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentry Vector Media | Secure Performance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00f2ff;
+            --black: #0d0d0d;
+            --grey: #1a1a1a;
+            --white: #f2f2f2;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Tactical Grid Background */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            position: relative;
+        }
+
+        /* The HUD Corner Brackets */
+        .hud-bracket {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--cyan);
+        }
+        .top-left { top: 10%; left: 10%; border-right: none; border-bottom: none; }
+        .top-right { top: 10%; right: 10%; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 10%; left: 10%; border-right: none; border-top: none; }
+        .bottom-right { bottom: 10%; right: 10%; border-left: none; border-top: none; }
+
+        .content {
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 8px;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        .subtitle {
+            color: var(--cyan);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: transparent;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--cyan);
+            color: var(--black);
+            box-shadow: 0 0 30px var(--cyan);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hud-bracket top-left"></div>
+        <div class="hud-bracket top-right"></div>
+        <div class="hud-bracket bottom-left"></div>
+        <div class="hud-bracket bottom-right"></div>
+
+        <div class="content">
+            <h1>Sentry Vector</h1>
+            <div class="subtitle">Secure Infrastructure // Data-Driven Media</div>
+            <button class="cta-button" onclick="window.location.href='mailto:your-email@example.com'">Initialize Audit</button>
+        </div>
+    </section>
+
+</body>
+</html>
+
+<section id="case-study" style="background: #0d0d0d; padding: 100px 20px; color: #fff; border-top: 1px solid #333;">
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+        <div style="flex: 1; min-width: 300px;">
+            <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 2px;">Vector Case Study</h2>
+            <h3 style="font-size: 2rem; margin: 10px 0;">San Antonio NP Associates</h3>
+            <p style="color: #ccc; line-height: 1.6;">We re-engineered the digital presence for this medical practice to ensure peak performance and security. By optimizing the technical infrastructure, we achieved a perfect 100/100 Lighthouse score.</p>
+            <ul style="list-style: none; padding: 0; color: #00f2ff; font-weight: bold;">
+                <li>✓ HIPAA-Ready Security Layout</li>
+                <li>✓ Sub-1s Load Times</li>
+                <li>✓ 100% Mobile Optimization</li>
+            </ul>
+        </div>
+        <div style="flex: 1; min-width: 300px; border: 2px solid #00f2ff; border-radius: 8px; padding: 20px; background: #1a1a1a; text-align: center;">
+            <div style="font-size: 3rem; font-weight: bold; color: #00f2ff;">100/100</div>
+            <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Lighthouse SEO Score</div>
+        </div>
+    </div>
+</section>
+
+<section id="services" style="background: #1a1a1a; padding: 100px 20px; text-align: center;">
+    <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px;">Service Protocols</h2>
+    <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        
+        <div style="background: #0d0d0d; padding: 40px; border: 1px solid #333; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
+            <h3 style="color: #fff;">Sentry Audit</h3>
+            <p style="color: #ccc;">Cybersecurity-first web builds. We implement Cloudflare WAF, SSL/TLS encryption, and brute-force protection to keep client data secure.</p>
+        </div>
+
+        <div style="background: #0d0d0d; padding: 40px; border: 1px solid #333; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
+            <h3 style="color: #fff;">Vector Dev</h3>
+            <p style="color: #ccc;">Custom Python and FastAPI integration. We build automation tools and high-performance applications tailored to your business data.</p>
+        </div>
+
+        <div style="background: #0d0d0d; padding: 40px; border: 1px solid #333; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
+            <h3 style="color: #fff;">Media Growth</h3>
+            <p style="color: #ccc;">AI-accelerated content creation. High-conversion video production and social media management to drive targeted organic reach.</p>
+        </div>
+
+    </div>
+</section>
