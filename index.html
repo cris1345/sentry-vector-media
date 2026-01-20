@@ -101,70 +101,122 @@
     filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.8));
 }
 
+/* GLOBAL NAVBAR STYLING */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(13, 13, 13, 0.9);
-    backdrop-filter: blur(10px); /* Keeps that HUD look */
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px); /* Tactical Glassmorphism */
     border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-    z-index: 1000;
-    padding: 5px 0; /* Reduced padding to balance the larger logo */
+    z-index: 2000;
+    padding: 10px 0;
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* This is the key for vertical alignment */
-    padding: 0 30px;
-}
-
-.nav-logo {
-    display: flex;
     align-items: center;
-    gap: 15px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--white);
+    padding: 0 40px;
 }
 
 .nav-logo img {
-    height: 75px; /* Bumped slightly more for maximum "Pop" */
+    height: 55px; /* Consistent scaling for the shield and text */
     width: auto;
-    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.6));
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: block;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .nav-logo img:hover {
-    transform: scale(1.1) translateY(5px); /* Logo grows and drops slightly on hover */
-    filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.9));
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .nav-links a {
     color: var(--white);
     text-decoration: none;
-    margin-left: 30px;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: 0.3s;
+    font-weight: 700; 
+    letter-spacing: 2px;
+    text-transform: uppercase; 
+    font-size: 0.95rem; 
+    transition: 0.3s ease;
+    display: inline-block;
 }
 
 .nav-links a:hover {
     color: var(--cyan);
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
 }
 
+/* PRIMARY CALL TO ACTION */
 .nav-cta {
     border: 1px solid var(--cyan);
-    padding: 8px 20px;
-    transition: 0.3s !important;
+    padding: 10px 20px;
+    border-radius: 2px;
+    background: transparent;
 }
 
 .nav-cta:hover {
     background: var(--cyan);
     color: var(--black) !important;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+/* SECURE PORTAL ACCESS */
+.portal-btn {
+    background: rgba(0, 242, 255, 0.05);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    padding: 10px 18px;
+    border-radius: 2px;
+    color: var(--cyan) !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.portal-btn:hover {
+    background: rgba(0, 242, 255, 0.15);
+    border-color: var(--cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
+/* PRIMARY CALL TO ACTION */
+.nav-cta {
+    border: 1px solid var(--cyan);
+    padding: 10px 20px;
+    border-radius: 2px;
+    background: transparent;
+}
+
+.nav-cta:hover {
+    background: var(--cyan);
+    color: var(--black) !important;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+/* SECURE PORTAL ACCESS */
+.portal-btn {
+    background: rgba(0, 242, 255, 0.05);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    padding: 10px 18px;
+    border-radius: 2px;
+    color: var(--cyan) !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.portal-btn:hover {
+    background: rgba(0, 242, 255, 0.15);
+    border-color: var(--cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
 }
 
 /* Adjust the Hero section to sit below the fixed navbar */
@@ -271,17 +323,20 @@ html {
 
     <nav class="navbar">
     <div class="nav-container">
-        <a href="#" class="nav-logo">
+        <a href="index.html" class="nav-logo">
             <img src="logo.svg" alt="Sentry Vector Media">
         </a>
+
         <div class="nav-links">
             <a href="index.html">Home</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="protocols.html">Protocols</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
+            <a href="portfolio.html">Deployments</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            
+            <a href="index.html#contact" class="nav-cta">Initialize Project</a>
+            
             <a href="#" class="portal-btn">
-                <span style="font-size: 0.8rem; margin-right: 5px;">&#128274;</span> CLIENT PORTAL
+                <span style="font-size: 0.9rem;">&#128274;</span> Portal
             </a>
         </div>
     </div>
