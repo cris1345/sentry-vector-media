@@ -8,8 +8,12 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap" media="print" onload="this.media='all'">
+    
+    <link rel="preload" as="image" href="Logo.svg">
+
     <noscript>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
     </noscript>
@@ -158,8 +162,7 @@
         .faq-hero {
             padding: 180px 20px 60px;
             text-align: center;
-            /* LCP Fix: Instant Visibility */
-            opacity: 1;
+            opacity: 1; /* LCP Fix */
             transform: translateY(0);
         }
 
@@ -177,6 +180,9 @@
             max-width: 900px;
             margin: 0 auto 100px;
             padding: 0 20px;
+            /* PERFORMANCE HACK: Skips rendering until scrolled to */
+            content-visibility: auto; 
+            contain-intrinsic-size: 500px;
         }
 
         .faq-item {
@@ -184,7 +190,7 @@
             border: 1px solid #222;
             margin-bottom: 20px;
             padding: 30px;
-            /* PERFORMANCE FIX: Specified transitions to avoid Forced Reflow */
+            /* GPU OPTIMIZATION: Only animate cheap properties */
             transition: border-color 0.3s ease, background-color 0.3s ease;
         }
 
@@ -193,7 +199,7 @@
             background: rgba(0, 242, 255, 0.02);
         }
 
-        /* A11Y FIX: Changed from h3 to h2 */
+        /* A11Y FIX: Ensure this targets H2 */
         .faq-item h2 {
             color: var(--cyan);
             font-size: 1.3rem;
@@ -213,6 +219,9 @@
             background: #050505;
             text-align: center;
             border-top: 1px solid #1a1a1a;
+            /* PERFORMANCE HACK */
+            content-visibility: auto;
+            contain-intrinsic-size: 200px;
         }
 
         .footer-logo {
@@ -226,9 +235,9 @@
         .reveal {
             opacity: 0;
             transform: translateY(20px);
-            /* PERFORMANCE FIX: Removed 'all', strictly targeted opacity/transform */
+            /* PERFORMANCE FIX: Strictly target opacity/transform */
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            will-change: opacity, transform; /* GPU Hint */
+            will-change: opacity, transform; /* Browser Hint */
         }
 
         .reveal.active {
