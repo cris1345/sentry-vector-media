@@ -57,6 +57,9 @@
             position: relative;
             padding: 100px 20px 40px;
             text-align: center;
+            /* LCP FIX: Ensure it is visible immediately */
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* HUD CORNER BRACKETS */
@@ -144,6 +147,8 @@
         .nav-logo img {
             height: 55px;
             width: auto;
+            /* CLS FIX: Explicit Aspect Ratio */
+            aspect-ratio: 180/55;
             filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
             transition: transform 0.3s ease;
         }
@@ -272,7 +277,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo" aria-label="Sentry Vector Home">
-                <img src="Logo.svg" alt="Sentry Vector Media">
+                <img src="logo.svg" alt="Sentry Vector Media" width="180" height="55">
             </a>
 
             <button class="menu-toggle" aria-label="Toggle Navigation">
@@ -284,7 +289,8 @@
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="portfolio.html">Deployments</a>
-                <a href="protocols.html">Protocols</a> <a href="about.html">About</a>
+                <a href="protocols.html">Protocols</a> 
+                <a href="about.html">About</a>
                 <a href="faq.html">FAQ</a>
                 
                 <a href="index.html#contact" class="nav-cta">Initialize Project</a>
@@ -296,7 +302,7 @@
         </div>
     </nav>
 
-    <header class="hero reveal">
+    <header class="hero">
         <div class="hud-bracket top-left"></div>
         <div class="hud-bracket top-right"></div>
         <div class="hud-bracket bottom-left"></div>
@@ -321,7 +327,7 @@
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px; text-align: center;">Active Deployments</h2>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
                 
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 30px; border-top: 4px solid var(--cyan);">
                     <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
@@ -577,7 +583,7 @@
 
     <footer class="reveal" style="background: #050505; padding: 60px 20px; border-top: 1px solid #00f2ff; text-align: center;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <img src="Logo.svg" alt="Sentry Vector Media" style="width: 180px; height: auto; filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4)); margin-bottom: 25px;">
+            <img src="logo.svg" alt="Sentry Vector Media" style="width: 180px; height: auto; filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4)); margin-bottom: 25px;" width="180" height="55">
             <p style="color: #666; font-size: 0.9rem; margin-bottom: 30px;">
                 Secure Digital Infrastructure & AI Media // Based in San Antonio, TX
             </p>
