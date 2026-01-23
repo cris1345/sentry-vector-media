@@ -158,7 +158,8 @@
         .faq-hero {
             padding: 180px 20px 60px;
             text-align: center;
-            opacity: 1; /* LCP Fix */
+            /* LCP Fix: Instant Visibility */
+            opacity: 1;
             transform: translateY(0);
         }
 
@@ -183,7 +184,8 @@
             border: 1px solid #222;
             margin-bottom: 20px;
             padding: 30px;
-            transition: 0.3s;
+            transition: border-color 0.3s ease; /* Optimized Transition */
+            will-change: border-color; /* Performance Hint */
         }
 
         .faq-item:hover {
@@ -220,12 +222,12 @@
             filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.2));
         }
 
-        /* ANIMATION UTILS */
+        /* ANIMATION UTILS: GPU ACCELERATED */
         .reveal {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Performance Fix */
-            will-change: opacity, transform; /* GPU Hint */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform; /* Crucial for avoiding forced reflow */
         }
 
         .reveal.active {
@@ -290,7 +292,7 @@
 
     <header class="faq-hero">
         <h1>Operational Intel</h1>
-        <p style="color: var(--cyan); letter-spacing: 3px;">FREQUENTLY ASKED QUESTIONS & TECHNICAL PROTOCOLS</p>
+        <p style="color: var(--cyan); letter-spacing: 3px; font-weight: 700;">FREQUENTLY ASKED QUESTIONS & TECHNICAL PROTOCOLS</p>
     </header>
 
     <main class="faq-container">
