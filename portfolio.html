@@ -8,7 +8,11 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
+    </noscript>
     
     <style>
         :root {
@@ -72,6 +76,8 @@
         .nav-logo img {
             height: 55px;
             width: auto;
+            /* Added explicit aspect ratio for CLS Score */
+            aspect-ratio: 180/55; 
             filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -153,6 +159,9 @@
         .portfolio-hero {
             padding: 180px 20px 80px;
             text-align: center;
+            /* REMOVED 'opacity: 0' to fix LCP Score */
+            opacity: 1; 
+            transform: translateY(0);
         }
 
         .portfolio-hero h1 {
@@ -257,6 +266,8 @@
 
         .footer-logo {
             width: 180px;
+            /* Explicit height for CLS Fix */
+            height: auto; 
             margin-bottom: 30px;
             filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.2));
         }
@@ -294,7 +305,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo" aria-label="Sentry Vector Home">
-                <img src="logo.svg" alt="Sentry Vector Media">
+                <img src="Logo.svg" alt="Sentry Vector Media" width="180" height="55">
             </a>
 
             <button class="menu-toggle" aria-label="Toggle Navigation">
@@ -306,7 +317,8 @@
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="portfolio.html">Deployments</a>
-                <a href="protocols.html">Protocols</a> <a href="about.html">About</a>
+                <a href="protocols.html">Protocols</a> 
+                <a href="about.html">About</a>
                 <a href="faq.html">FAQ</a>
                 
                 <a href="index.html#contact" class="nav-cta">Initialize Project</a>
@@ -318,55 +330,59 @@
         </div>
     </nav>
 
-    <section class="portfolio-hero reveal">
-        <h1>Technical Registry</h1>
-        <p>HIGH-PERFORMANCE DEPLOYMENTS & INFRASTRUCTURE REVAMPS</p>
-    </section>
+    <main>
 
-    <section class="case-study reveal">
-        <div class="case-image">
-            <span>[ SYSTEM VISUAL: MEDICAL SECURE STACK ]</span>
-        </div>
-        <div class="case-info">
-            <span style="color: var(--cyan); font-weight: bold; letter-spacing: 2px;">01 // HEALTHCARE SECTOR</span>
-            <h2>San Antonio Medical Practice</h2>
-            <p style="color: #888;">Complete migration of patient-facing infrastructure to a hardened, static environment. We replaced legacy, low-performance systems with a custom-engineered stack designed for absolute stability.</p>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-value">100/100</div>
-                    <div class="stat-label">Performance Rating</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">A+</div>
-                    <div class="stat-label">Security Header Grade</div>
+        <section class="portfolio-hero">
+            <h1>Technical Registry</h1>
+            <p>HIGH-PERFORMANCE DEPLOYMENTS & INFRASTRUCTURE REVAMPS</p>
+        </section>
+
+        <section class="case-study reveal">
+            <div class="case-image">
+                <span>[ SYSTEM VISUAL: MEDICAL SECURE STACK ]</span>
+            </div>
+            <div class="case-info">
+                <span style="color: var(--cyan); font-weight: bold; letter-spacing: 2px;">01 // HEALTHCARE SECTOR</span>
+                <h2>San Antonio Medical Practice</h2>
+                <p style="color: #888;">Complete migration of patient-facing infrastructure to a hardened, static environment. We replaced legacy, low-performance systems with a custom-engineered stack designed for absolute stability.</p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">100/100</div>
+                        <div class="stat-label">Performance Rating</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">A+</div>
+                        <div class="stat-label">Security Header Grade</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="case-study reveal">
-        <div class="case-info">
-            <span style="color: var(--cyan); font-weight: bold; letter-spacing: 2px;">02 // HOSPITALITY SECTOR</span>
-            <h2>Texas BBQ & Catering</h2>
-            <p style="color: #888;">Comprehensive digital revamp for a high-traffic local brand. Objective: Transition from generic, limited platforms to a high-conversion custom architecture built for rapid scaling and localized SEO dominance.</p>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-value">+320%</div>
-                    <div class="stat-label">Load Speed Increase</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">Active</div>
-                    <div class="stat-label">AI Media Integration</div>
+        <section class="case-study reveal">
+            <div class="case-info">
+                <span style="color: var(--cyan); font-weight: bold; letter-spacing: 2px;">02 // HOSPITALITY SECTOR</span>
+                <h2>Texas BBQ & Catering</h2>
+                <p style="color: #888;">Comprehensive digital revamp for a high-traffic local brand. Objective: Transition from generic, limited platforms to a high-conversion custom architecture built for rapid scaling and localized SEO dominance.</p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">+320%</div>
+                        <div class="stat-label">Load Speed Increase</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">Active</div>
+                        <div class="stat-label">AI Media Integration</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="case-image">
-            <span>[ SYSTEM VISUAL: HOSPITALITY GROWTH VECTOR ]</span>
-        </div>
-    </section>
+            <div class="case-image">
+                <span>[ SYSTEM VISUAL: HOSPITALITY GROWTH VECTOR ]</span>
+            </div>
+        </section>
+
+    </main>
 
     <footer>
-        <img src="logo.svg" alt="Sentry Vector Media" class="footer-logo">
+        <img src="Logo.svg" alt="Sentry Vector Media" class="footer-logo" width="180" height="55">
         <div style="margin-bottom: 20px;">
             <a href="#" style="color: var(--cyan); margin: 0 15px; text-decoration: none;">TIKTOK</a>
             <a href="#" style="color: var(--cyan); margin: 0 15px; text-decoration: none;">LINKEDIN</a>
