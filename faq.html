@@ -184,8 +184,8 @@
             border: 1px solid #222;
             margin-bottom: 20px;
             padding: 30px;
-            transition: border-color 0.3s ease; /* Optimized Transition */
-            will-change: border-color; /* Performance Hint */
+            /* PERFORMANCE FIX: Specified transitions to avoid Forced Reflow */
+            transition: border-color 0.3s ease, background-color 0.3s ease;
         }
 
         .faq-item:hover {
@@ -226,8 +226,9 @@
         .reveal {
             opacity: 0;
             transform: translateY(20px);
+            /* PERFORMANCE FIX: Removed 'all', strictly targeted opacity/transform */
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            will-change: opacity, transform; /* Crucial for avoiding forced reflow */
+            will-change: opacity, transform; /* GPU Hint */
         }
 
         .reveal.active {
