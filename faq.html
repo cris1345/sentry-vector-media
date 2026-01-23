@@ -158,8 +158,7 @@
         .faq-hero {
             padding: 180px 20px 60px;
             text-align: center;
-            /* LCP Fix: Instant Visibility */
-            opacity: 1;
+            opacity: 1; /* LCP Fix */
             transform: translateY(0);
         }
 
@@ -192,7 +191,8 @@
             background: rgba(0, 242, 255, 0.02);
         }
 
-        .faq-item h3 {
+        /* A11Y FIX: Changed from h3 to h2 */
+        .faq-item h2 {
             color: var(--cyan);
             font-size: 1.3rem;
             letter-spacing: 1px;
@@ -224,7 +224,8 @@
         .reveal {
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.6s ease-out;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Performance Fix */
+            will-change: opacity, transform; /* GPU Hint */
         }
 
         .reveal.active {
@@ -287,33 +288,30 @@
         </div>
     </nav>
 
-    <main>
+    <header class="faq-hero">
+        <h1>Operational Intel</h1>
+        <p style="color: var(--cyan); letter-spacing: 3px;">FREQUENTLY ASKED QUESTIONS & TECHNICAL PROTOCOLS</p>
+    </header>
 
-        <header class="faq-hero">
-            <h1>Operational Intel</h1>
-            <p style="color: var(--cyan); letter-spacing: 3px; font-weight: 700;">FREQUENTLY ASKED QUESTIONS & TECHNICAL PROTOCOLS</p>
-        </header>
+    <main class="faq-container">
+        <div class="faq-item reveal">
+            <h2>Why should I migrate my site from a generic builder?</h2>
+            <p>Generic platforms often compromise speed and security for ease of use. At Sentry Vector, we build high-performance, hardened infrastructure that ensures your San Antonio business isn't held back by bloated code or technical vulnerabilities.</p>
+        </div>
 
-        <div class="faq-container">
-            <div class="faq-item reveal">
-                <h3>Why should I migrate my site from a generic builder?</h3>
-                <p>Generic platforms often compromise speed and security for ease of use. At Sentry Vector, we build high-performance, hardened infrastructure that ensures your San Antonio business isn't held back by bloated code or technical vulnerabilities.</p>
-            </div>
+        <div class="faq-item reveal">
+            <h2>What is a 100/100 Lighthouse score?</h2>
+            <p>This is the gold standard for web performance. It means your site is optimized for maximum speed, accessibility, and SEO. For medical practices and local brands, this translates directly to better search rankings and higher client retention.</p>
+        </div>
 
-            <div class="faq-item reveal">
-                <h3>What is a 100/100 Lighthouse score?</h3>
-                <p>This is the gold standard for web performance. It means your site is optimized for maximum speed, accessibility, and SEO. For medical practices and local brands, this translates directly to better search rankings and higher client retention.</p>
-            </div>
+        <div class="faq-item reveal">
+            <h2>How do you handle security for medical practices?</h2>
+            <p>We implement enterprise-grade security headers, Cloudflare WAF protection, and SSL/TLS hardening. Our mission is to protect your digital reputation with the same intensity we use for infrastructure development.</p>
+        </div>
 
-            <div class="faq-item reveal">
-                <h3>How do you handle security for medical practices?</h3>
-                <p>We implement enterprise-grade security headers, Cloudflare WAF protection, and SSL/TLS hardening. Our mission is to protect your digital reputation with the same intensity we use for infrastructure development.</p>
-            </div>
-
-            <div class="faq-item reveal">
-                <h3>Do you offer custom automation for small businesses?</h3>
-                <p>Yes. Beyond web builds, we specialize in Python-based automation and AI-integrated media to help local brands, such as hospitality and catering, scale their outreach and streamline operations.</p>
-            </div>
+        <div class="faq-item reveal">
+            <h2>Do you offer custom automation for small businesses?</h2>
+            <p>Yes. Beyond web builds, we specialize in Python-based automation and AI-integrated media to help local brands, such as hospitality and catering, scale their outreach and streamline operations.</p>
         </div>
     </main>
 
