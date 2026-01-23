@@ -4,113 +4,335 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocols | Sentry Vector Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        /* [Insert standardized CSS variables and navbar/footer styles here] */
-        
-        .protocol-header {
-            padding: 180px 20px 60px;
+        :root {
+            --cyan: #00f2ff;
+            --black: #050505;
+            --dark-grey: #0d0d0d;
+            --white: #ffffff;
+            --grid-color: rgba(0, 242, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Tactical Grid Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        /* Standardized Command Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+            z-index: 2000;
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .nav-logo img {
+            height: 55px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-cta {
+            border: 1px solid var(--cyan);
+            padding: 10px 20px;
+            border-radius: 2px;
+        }
+
+        .nav-cta:hover {
+            background: var(--cyan);
+            color: var(--black) !important;
+        }
+
+        .portal-btn {
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            padding: 10px 18px;
+            border-radius: 2px;
+            color: var(--cyan) !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 200px 20px 80px;
             text-align: center;
         }
 
-        .protocol-container {
-            max-width: 1100px;
-            margin: 0 auto 100px;
-            padding: 0 20px;
-        }
-
-        .protocol-tier {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid #1a1a1a;
-            padding: 50px;
-            margin-bottom: 30px;
-            border-top: 4px solid var(--cyan);
-        }
-
-        .protocol-tier h2 {
-            color: var(--cyan);
-            letter-spacing: 4px;
+        .hero h1 {
+            font-size: 4rem;
+            letter-spacing: 12px;
             text-transform: uppercase;
             margin-bottom: 20px;
         }
 
-        .outcome-list {
-            list-style: none;
+        /* Protocols Content */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pillar-box {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--cyan);
+            padding: 50px;
+            margin-bottom: 50px;
+        }
+
+        .pillar-box h2 {
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* Pricing Tiers */
+        .pricing-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
 
-        .outcome-item {
-            border-left: 1px solid #333;
-            padding-left: 15px;
+        .price-card {
+            background: #0d0d0d;
+            border: 1px solid #222;
+            padding: 40px;
+            text-align: left;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
-        .outcome-item strong {
-            display: block;
-            color: var(--white);
-            margin-bottom: 5px;
+        .price-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-5px);
+        }
+
+        .price-card h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .price-tag {
+            font-size: 1.8rem;
+            color: var(--cyan);
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .features {
+            list-style: none;
+            color: #888;
             font-size: 0.9rem;
+            margin-bottom: 30px;
+            flex-grow: 1;
         }
 
-        .outcome-item span {
-            color: #666;
-            font-size: 0.8rem;
+        .features li {
+            margin-bottom: 12px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 5px;
+        }
+
+        .initialize-btn {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .initialize-btn:hover {
+            background: var(--cyan);
+            color: var(--black);
+        }
+
+        footer {
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-    <header class="protocol-header reveal">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo.svg" alt="Sentry Vector Media">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="portfolio.html">Deployments</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <a href="index.html#contact" class="nav-cta">Initialize Project</a>
+                <a href="#" class="portal-btn"><span>&#128274;</span> Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero reveal">
         <h1>Service Protocols</h1>
-        <p style="color: var(--cyan); letter-spacing: 3px;">ELITE DIGITAL SOLUTIONS ENGINEERED FOR OUTCOMES</p>
+        <p style="color: var(--cyan); letter-spacing: 4px; font-weight: 700;">ELITE INFRASTRUCTURE // AGGRESSIVE GROWTH</p>
     </header>
 
-    <main class="protocol-container">
-        
-        <section class="protocol-tier reveal">
-            <h2>The Sentry Protocol</h2>
-            <p style="color: #bbb; font-size: 1.1rem; line-height: 1.8;">
-                Protecting your digital assets with enterprise-grade hardening. We ensure that your brand’s reputation is backed by an indestructible infrastructure designed to withstand modern threats.
+    <main class="container">
+        <section class="pillar-box reveal">
+            <h2>The Sentry Protocol (Security)</h2>
+            <p style="color: #bbb; font-size: 1.1rem;">
+                We deploy hardened digital infrastructure designed to protect professional reputations. For our San Antonio medical partners, absolute security is the baseline—not an optional upgrade.
             </p>
-            <div class="outcome-list">
-                <div class="outcome-item">
-                    <strong>Asset Hardening</strong>
-                    <span>Shielding your site from vulnerabilities and unauthorized access.</span>
-                </div>
-                <div class="outcome-item">
-                    <strong>Data Integrity</strong>
-                    <span>Secure transmission protocols for professional and medical sectors.</span>
-                </div>
-                <div class="outcome-item">
-                    <strong>System Resilience</strong>
-                    <span>Infrastructure built for 99.9% uptime and total reliability.</span>
-                </div>
-            </div>
         </section>
 
-        <section class="protocol-tier reveal" style="border-top-color: var(--white);">
-            <h2 style="color: var(--white);">The Vector Protocol</h2>
-            <p style="color: #bbb; font-size: 1.1rem; line-height: 1.8;">
-                Accelerating your brand through precision-engineered performance. We build high-speed digital vectors that increase visibility and drive aggressive business growth.
+        <section class="pillar-box reveal" style="border-left-color: var(--white);">
+            <h2 style="color: var(--white);">The Vector Protocol (Performance)</h2>
+            <p style="color: #bbb; font-size: 1.1rem;">
+                Growth is engineered through technical velocity. Every build is optimized for a 100/100 performance rating to ensure your brand reaches its maximum market potential.
             </p>
-            <div class="outcome-list">
-                <div class="outcome-item">
-                    <strong>Lighthouse Optimization</strong>
-                    <span>Hitting 100/100 performance scores for maximum SEO reach.</span>
-                </div>
-                <div class="outcome-item">
-                    <strong>Market Velocity</strong>
-                    <span>Fast-loading builds that keep users engaged and convert at higher rates.</span>
-                </div>
-                <div class="outcome-item">
-                    <strong>Scalable Media</strong>
-                    <span>Digital assets designed to grow and adapt alongside your business.</span>
-                </div>
-            </div>
         </section>
 
+        <section class="pricing-section reveal">
+            <h2 style="text-transform: uppercase; letter-spacing: 4px;">Investment Tiers</h2>
+            <div class="pricing-grid">
+                
+                <div class="price-card">
+                    <h3>Digital Hardening</h3>
+                    <p style="color: #555; font-size: 0.85rem;">Infrastructure revamps for existing local brands.</p>
+                    <div class="price-tag">Starting at $2,500</div>
+                    <ul class="features">
+                        <li>✓ Performance Optimization</li>
+                        <li>✓ Security Header Hardening</li>
+                        <li>✓ SEO Foundation Upgrade</li>
+                    </ul>
+                    <a href="index.html#contact" class="initialize-btn">Initialize</a>
+                </div>
+
+                <div class="price-card" style="border-color: var(--cyan); background: #080808; box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);">
+                    <h3>Strategic Build</h3>
+                    <p style="color: #555; font-size: 0.85rem;">Ground-up engineering for professional sectors.</p>
+                    <div class="price-tag">Starting at $5,000</div>
+                    <ul class="features">
+                        <li>✓ 100/100 Lighthouse Standard</li>
+                        <li>✓ Enterprise Security protocols</li>
+                        <li>✓ Advanced Conversion Vector</li>
+                    </ul>
+                    <a href="index.html#contact" class="initialize-btn" style="background: var(--cyan); color: var(--black);">Initialize</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Full Vector</h3>
+                    <p style="color: #555; font-size: 0.85rem;">Complete media and technical takeover.</p>
+                    <div class="price-tag">Custom Quote</div>
+                    <ul class="features">
+                        <li>✓ Managed Security Infrastructure</li>
+                        <li>✓ AI-Integrated Growth Media</li>
+                        <li>✓ Automated System Management</li>
+                    </ul>
+                    <a href="index.html#contact" class="initialize-btn">Initialize</a>
+                </div>
+
+            </div>
+        </section>
     </main>
 
-    </body>
+    <footer>
+        <img src="logo.svg" alt="Sentry Vector Media" style="width: 160px; margin-bottom: 20px; opacity: 0.5;">
+        <p style="color: #333; font-size: 0.8rem; letter-spacing: 2px;">&copy; 2026 SENTRY VECTOR MEDIA // SAN ANTONIO, TX</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
 </html>

@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sentry Vector Media: Secure, high-performance web development and AI media strategies in San Antonio. Enterprise hardening and growth engineering.">
     <title>Sentry Vector Media | Secure Performance</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --cyan: #00f2ff;
@@ -13,17 +18,34 @@
             --white: #f2f2f2;
         }
 
+        /* RESET & BASE */
+        * { box-sizing: border-box; }
+        
         body {
             margin: 0;
             background-color: var(--black);
             color: var(--white);
             font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Tactical Grid Background */
+        /* UTILITY: Screen Reader Only (Lighthouse Accessibility) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* TACTICAL GRID BACKGROUND */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -33,20 +55,24 @@
                 linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
             background-size: 50px 50px;
             position: relative;
+            padding: 100px 20px 40px;
+            text-align: center;
         }
 
-        /* The HUD Corner Brackets */
+        /* HUD CORNER BRACKETS */
         .hud-bracket {
             position: absolute;
             width: 40px;
             height: 40px;
             border: 2px solid var(--cyan);
+            pointer-events: none;
         }
-        .top-left { top: 10%; left: 10%; border-right: none; border-bottom: none; }
-        .top-right { top: 10%; right: 10%; border-left: none; border-bottom: none; }
-        .bottom-left { bottom: 10%; left: 10%; border-right: none; border-top: none; }
-        .bottom-right { bottom: 10%; right: 10%; border-left: none; border-top: none; }
+        .top-left { top: 120px; left: 20px; border-right: none; border-bottom: none; }
+        .top-right { top: 120px; right: 20px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
+        /* CONTENT STYLING */
         .content {
             text-align: center;
             z-index: 10;
@@ -58,6 +84,7 @@
             margin-bottom: 0;
             text-transform: uppercase;
             text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+            line-height: 1.1;
         }
 
         .subtitle {
@@ -65,10 +92,14 @@
             font-size: 1.2rem;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin-top: 10px;
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 25px;
         }
 
+        /* BUTTONS */
         .cta-button {
+            display: inline-block;
             margin-top: 40px;
             padding: 15px 40px;
             background: transparent;
@@ -80,6 +111,7 @@
             letter-spacing: 2px;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 1rem;
         }
 
         .cta-button:hover {
@@ -88,524 +120,506 @@
             box-shadow: 0 0 30px var(--cyan);
         }
 
-        .logo-glow {
-    width: 180px; /* Adjust size as needed */
-    height: auto;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
+        /* GLOBAL NAVBAR STYLING */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+            z-index: 2000;
+            padding: 10px 0;
+        }
 
-.logo-glow:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.8));
-}
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
 
-/* GLOBAL NAVBAR STYLING */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(13, 13, 13, 0.95);
-    backdrop-filter: blur(10px); /* Tactical Glassmorphism */
-    border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-    z-index: 2000;
-    padding: 10px 0;
-}
+        .nav-logo img {
+            height: 55px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
+            transition: transform 0.3s ease;
+        }
 
-.nav-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-}
+        .nav-logo img:hover { transform: scale(1.05); }
 
-.nav-logo img {
-    height: 55px; /* Consistent scaling for the shield and text */
-    width: auto;
-    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
 
-.nav-logo img:hover {
-    transform: scale(1.05);
-}
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700; 
+            letter-spacing: 2px;
+            text-transform: uppercase; 
+            font-size: 0.95rem; 
+            transition: 0.3s ease;
+            display: inline-block;
+        }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
+        .nav-links a:hover {
+            color: var(--cyan);
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
 
-.nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 700; 
-    letter-spacing: 2px;
-    text-transform: uppercase; 
-    font-size: 0.95rem; 
-    transition: 0.3s ease;
-    display: inline-block;
-}
+        .nav-cta {
+            border: 1px solid var(--cyan);
+            padding: 10px 20px;
+            border-radius: 2px;
+            background: transparent;
+        }
 
-.nav-links a:hover {
-    color: var(--cyan);
-    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
-}
+        .nav-cta:hover {
+            background: var(--cyan);
+            color: var(--black) !important;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+        }
 
-/* PRIMARY CALL TO ACTION */
-.nav-cta {
-    border: 1px solid var(--cyan);
-    padding: 10px 20px;
-    border-radius: 2px;
-    background: transparent;
-}
+        .portal-btn {
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            padding: 10px 18px;
+            border-radius: 2px;
+            color: var(--cyan) !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-.nav-cta:hover {
-    background: var(--cyan);
-    color: var(--black) !important;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-}
+        .portal-btn:hover {
+            background: var(--cyan);
+            color: #0d0d0d !important;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
 
-/* SECURE PORTAL ACCESS */
-.portal-btn {
-    background: rgba(0, 242, 255, 0.05);
-    border: 1px solid rgba(0, 242, 255, 0.3);
-    padding: 10px 18px;
-    border-radius: 2px;
-    color: var(--cyan) !important;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+        /* MOBILE MENU TOGGLE */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 2001;
+        }
+        .bar {
+            width: 30px;
+            height: 2px;
+            background-color: var(--cyan);
+            transition: 0.3s;
+        }
 
-.portal-btn:hover {
-    background: rgba(0, 242, 255, 0.15);
-    border-color: var(--cyan);
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
-}
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* PRIMARY CALL TO ACTION */
-.nav-cta {
-    border: 1px solid var(--cyan);
-    padding: 10px 20px;
-    border-radius: 2px;
-    background: transparent;
-}
+        /* SECTION STYLING */
+        section {
+            border-top: 1px solid #1a1a1a;
+        }
 
-.nav-cta:hover {
-    background: var(--cyan);
-    color: var(--black) !important;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-}
-
-/* SECURE PORTAL ACCESS */
-.portal-btn {
-    background: rgba(0, 242, 255, 0.05);
-    border: 1px solid rgba(0, 242, 255, 0.3);
-    padding: 10px 18px;
-    border-radius: 2px;
-    color: var(--cyan) !important;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.portal-btn:hover {
-    background: rgba(0, 242, 255, 0.15);
-    border-color: var(--cyan);
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
-}
-
-/* Adjust the Hero section to sit below the fixed navbar */
-.hero {
-    padding-top: 80px;
-}
-
-/* Mobile Responsive Adjustments */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* We will replace this with a 'hamburger' menu icon later */
-    }
-    
-    .nav-container {
-        justify-content: center;
-    }
-
-    h1 {
-        font-size: 2.5rem; /* Shrink title for mobile */
-        letter-spacing: 4px;
-    }
-
-    .hud-bracket {
-        width: 20px;
-        height: 20px;
-    }
-}
-.logo-animate {
-    height: 45px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.3));
-    cursor: pointer;
-}
-
-.logo-animate:hover {
-    transform: scale(1.1) rotate(5deg);
-    filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.8));
-}
-
-/* Subtle continuous pulse effect */
-@keyframes cyanPulse {
-    0% { filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.3)); }
-    50% { filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.6)); }
-    100% { filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.3)); }
-}
-
-.logo-animate {
-    animation: cyanPulse 3s infinite ease-in-out;
-}
-
-/* Smooth Scroll Behavior */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Base state for all animated sections */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Active state triggered by JavaScript */
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Section-specific "Glitch" entry for the Sentry look */
-@keyframes hudGlitch {
-    0% { opacity: 0; transform: skewX(-10deg); }
-    50% { opacity: 0.5; transform: skewX(10deg); }
-    100% { opacity: 1; transform: skewX(0); }
-}
-
-.hud-animate {
-    animation: hudGlitch 0.4s ease-out forwards;
-}
-
-.portal-btn {
-    border: 1px solid rgba(0, 242, 255, 0.3);
-    padding: 8px 15px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    background: rgba(0, 242, 255, 0.05);
-    color: var(--cyan) !important;
-}
-
-.portal-btn:hover {
-    background: var(--cyan);
-    color: #0d0d0d !important;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
-    transform: translateY(-2px);
-    border-color: var(--cyan);
-}
-        
-        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .nav-container { padding: 0 20px; }
+            
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #0d0d0d;
+                flex-direction: column;
+                justify-content: center;
+                border-left: 1px solid var(--cyan);
+                transition: 0.4s ease-in-out;
+                padding: 20px;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+            }
+            .nav-links.active { right: 0; }
+            
+            h1 { font-size: 2.5rem; letter-spacing: 4px; }
+            .subtitle { font-size: 1rem; letter-spacing: 2px; }
+            
+            .hud-bracket { width: 25px; height: 25px; }
+            .top-left, .top-right { top: 100px; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="nav-logo">
-            <img src="logo.svg" alt="Sentry Vector Media">
-        </a>
-
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="portfolio.html">Deployments</a>
-            <a href="about.html">About</a>
-            <a href="faq.html">FAQ</a>
-            
-            <a href="index.html#contact" class="nav-cta">Initialize Project</a>
-            
-            <a href="#" class="portal-btn">
-                <span style="font-size: 0.9rem;">&#128274;</span> Portal
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Sentry Vector Home">
+                <img src="logo.svg" alt="Sentry Vector Media">
             </a>
-        </div>
-    </div>
-</nav>
 
-    <section class="hero" class="reveal">
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="portfolio.html">Deployments</a>
+                <a href="protocols.html">Protocols</a> <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                
+                <a href="index.html#contact" class="nav-cta">Initialize Project</a>
+                
+                <a href="#" class="portal-btn">
+                    <span style="font-size: 0.9rem;" aria-hidden="true">&#128274;</span> Portal
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero reveal">
         <div class="hud-bracket top-left"></div>
         <div class="hud-bracket top-right"></div>
         <div class="hud-bracket bottom-left"></div>
         <div class="hud-bracket bottom-right"></div>
 
-       <div class="content">
-    <h1>Sentry Vector</h1>
-    <div class="subtitle" style="font-weight: 700; letter-spacing: 5px; color: #00f2ff; margin-bottom: 20px;">
-        SECURE BY DESIGN. DRIVEN BY DATA.
-    </div>
-    
-    <p style="color: #bbb; max-width: 650px; margin: 0 auto 30px; font-size: 1.1rem; line-height: 1.5;">
-        We build and revamp high-performance websites for San Antonio’s professional sectors. 
-        From medical practices to local brands, we ensure your digital presence is faster, more secure, and engineered to grow.
-    </p>
+        <div class="content">
+            <h1>Sentry Vector</h1>
+            <div class="subtitle">Secure by Design. Driven by Data.</div>
+            
+            <p style="color: #bbb; max-width: 650px; margin: 0 auto 30px; font-size: 1.1rem; line-height: 1.5;">
+                We build and revamp high-performance websites for San Antonio’s professional sectors. 
+                From medical practices to local brands, we ensure your digital presence is faster, more secure, and engineered to grow.
+            </p>
 
-    <button class="cta-button" onclick="document.getElementById('audit').scrollIntoView({behavior: 'smooth'})">
-        INITIALIZE BUILD
-    </button>
-</div>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                INITIALIZE BUILD
+            </button>
+        </div>
+    </header>
+
+    <section id="work" class="reveal" style="padding: 100px 20px; background: #0a0a0a;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px; text-align: center;">Active Deployments</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+                
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 30px; border-top: 4px solid var(--cyan);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                        <span style="color: var(--cyan); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;">[ SECTOR: HEALTHCARE ]</span>
+                        <span style="color: #444; font-size: 0.8rem;">STATUS: OPERATIONAL</span>
+                    </div>
+                    <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 15px;">San Antonio Medical Practice</h3>
+                    <p style="color: #888; line-height: 1.6; font-size: 0.95rem;">
+                        Complete infrastructure overhaul for a high-volume medical clinic. We engineered a secure, lightning-fast deployment that achieved 100/100 performance scores across all device types.
+                    </p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 30px; border-top: 4px solid var(--cyan);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                        <span style="color: var(--cyan); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;">[ SECTOR: HOSPITALITY ]</span>
+                        <span style="color: #444; font-size: 0.8rem;">STATUS: IN-DEVELOPMENT</span>
+                    </div>
+                    <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 15px;">Texas BBQ & Catering</h3>
+                    <p style="color: #888; line-height: 1.6; font-size: 0.95rem;">
+                        Full-scale digital revamp focused on localized growth and conversion engineering. We are transitioning this brand into a custom-built infrastructure designed for rapid scaling and high-traffic events.
+                    </p>
+                </div>
+
+            </div>
+        </div>
     </section>
-<script>
-    // Force immediate check on load
-    function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
-        for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 150;
-            if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add("active");
+
+    <section id="about-preview" class="reveal" style="padding: 100px 20px; background: #080808; border-top: 1px solid #1a1a1a;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
+            
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px;">The Sentry Standard</h2>
+                <p style="color: #ccc; font-size: 1.1rem; line-height: 1.7; margin: 20px 0;">
+                    Sentry Vector Media was founded on a single principle: that high-end media shouldn't come at the cost of technical integrity. 
+                </p>
+                <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
+                    Based in San Antonio, we specialize in bridging the gap between secure, hardened infrastructure and aggressive digital growth for professional practices and local brands.
+                </p>
+            </div>
+
+            <div style="flex: 1; min-width: 300px; display: grid; gap: 20px;">
+                <div style="background: rgba(255,255,255,0.03); padding: 25px; border-left: 2px solid var(--cyan);">
+                    <strong style="color: var(--white); display: block; margin-bottom: 5px;">THE SENTRY PILLAR</strong>
+                    <span style="color: #666; font-size: 0.85rem;">Security-first engineering. We protect your data and your reputation using enterprise-grade hardening protocols.</span>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 25px; border-left: 2px solid var(--cyan);">
+                    <strong style="color: var(--white); display: block; margin-bottom: 5px;">THE VECTOR PILLAR</strong>
+                    <span style="color: #666; font-size: 0.85rem;">Performance-driven growth. We leverage AI-integrated media and high-speed stacks to outpace the competition.</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="case-study" class="reveal" style="background: #0d0d0d; padding: 100px 20px; color: #fff; border-top: 1px solid #333;">
+        <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 2px;">Vector Case Study</h2>
+                <h3 style="font-size: 2rem; margin: 10px 0;">San Antonio NP Associates</h3>
+                <p style="color: #ccc; line-height: 1.6;">We re-engineered the digital presence for this medical practice to ensure peak performance and security. By optimizing the technical infrastructure, we achieved a perfect 100/100 Lighthouse score.</p>
+                <ul style="list-style: none; padding: 0; color: #00f2ff; font-weight: bold;">
+                    <li>✓ HIPAA-Ready Security Layout</li>
+                    <li>✓ Sub-1s Load Times</li>
+                    <li>✓ 100% Mobile Optimization</li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 300px; border: 2px solid #00f2ff; border-radius: 8px; padding: 20px; background: #1a1a1a; text-align: center;">
+                <div style="font-size: 3rem; font-weight: bold; color: #00f2ff;">100/100</div>
+                <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Lighthouse SEO Score</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="media" class="reveal" style="background: #1a1a1a; padding: 100px 20px; border-top: 1px solid #333;">
+        <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+            <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px;">Media Production Vector</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                
+                <div style="background: #0d0d0d; border: 1px solid #333; padding: 10px; border-radius: 8px;">
+                    <div style="aspect-ratio: 9/16; background: #222; display: flex; align-items: center; justify-content: center; color: #444; margin-bottom: 15px;">
+                        <span>[ AI-GENERATED TIKTOK PREVIEW ]</span>
+                    </div>
+                    <h3 style="color: #fff; font-size: 1rem; letter-spacing: 1px;">ALGORITHM OPTIMIZED CONTENT</h3>
+                    <p style="color: #666; font-size: 0.8rem;">Local AI workflows for rapid social media scaling.</p>
+                </div>
+
+                <div style="background: #0d0d0d; border: 1px solid #333; padding: 10px; border-radius: 8px;">
+                    <div style="aspect-ratio: 9/16; background: #222; display: flex; align-items: center; justify-content: center; color: #444; margin-bottom: 15px;">
+                        <span>[ BRAND IDENTITY REEL ]</span>
+                    </div>
+                    <h3 style="color: #fff; font-size: 1rem; letter-spacing: 1px;">DATA-DRIVEN STORYTELLING</h3>
+                    <p style="color: #666; font-size: 0.8rem;">Converting complex infrastructure into digestible media.</p>
+                </div>
+
+                <div style="background: #0d0d0d; border: 1px solid #333; padding: 10px; border-radius: 8px;">
+                    <div style="aspect-ratio: 9/16; background: #222; display: flex; align-items: center; justify-content: center; color: #444; margin-bottom: 15px;">
+                        <span>[ MEDICAL SEO CASE STUDY ]</span>
+                    </div>
+                    <h3 style="color: #fff; font-size: 1rem; letter-spacing: 1px;">VERTICAL AUTHORITY</h3>
+                    <p style="color: #666; font-size: 0.8rem;">High-retention video assets for professional services.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="protocols" class="reveal" style="background: #050505; padding: 100px 20px; border-top: 1px solid #1a1a1a;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px;">Service Protocols</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                
+                <div style="background: #0d0d0d; border: 1px solid #333; padding: 40px; text-align: left; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
+                    <h3 style="color: #00f2ff; letter-spacing: 2px;">01. WEB CREATION & REVAMPS</h3>
+                    <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                        Moving beyond legacy builders. We transition brands from platforms like Squarespace to high-performance stacks optimized for San Antonio's local market.
+                    </p>
+                    <ul style="color: #777; font-size: 0.85rem; padding-left: 18px; line-height: 1.8;">
+                        <li>Strategic Platform Migration</li>
+                        <li>Mobile-First UX Engineering</li>
+                        <li>Localized SEO Integration</li>
+                    </ul>
+                </div>
+
+                <div style="background: #0d0d0d; border: 1px solid #333; padding: 40px; text-align: left; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
+                    <h3 style="color: #00f2ff; letter-spacing: 2px;">02. SENTRY HARDENING</h3>
+                    <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                        Enterprise-grade security and performance. We protect professional practices with hardened infrastructure designed to achieve a 100/100 Lighthouse score.
+                    </p>
+                    <ul style="color: #777; font-size: 0.85rem; padding-left: 18px; line-height: 1.8;">
+                        <li>Cloudflare WAF Deployment</li>
+                        <li>SSL/TLS Protocol Optimization</li>
+                        <li>Indestructible Static Hosting</li>
+                    </ul>
+                </div>
+
+                <div style="background: #0d0d0d; border: 1px solid #333; padding: 40px; text-align: left; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
+                    <h3 style="color: #00f2ff; letter-spacing: 2px;">03. DATA & MEDIA VECTORS</h3>
+                    <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                        Accelerating brand reach through technical automation. We leverage custom Python tools and AI-integrated media to drive aggressive growth.
+                    </p>
+                    <ul style="color: #777; font-size: 0.85rem; padding-left: 18px; line-height: 1.8;">
+                        <li>AI Content Workflows</li>
+                        <li>Custom API & Tool Creation</li>
+                        <li>Algorithmic Strategy</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="guarantee" class="reveal" style="padding: 100px 20px; background: #050505; border-top: 1px solid #1a1a1a;">
+        <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+            <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px;">Performance Standards</h2>
+            <p style="color: #666; margin-bottom: 60px; font-size: 1rem; letter-spacing: 1px;">MINIMUM OPERATIONAL REQUIREMENTS FOR ALL DEPLOYMENTS</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                
+                <div style="padding: 20px;">
+                    <div style="font-size: 3rem; color: var(--white); font-weight: 800; margin-bottom: 10px;">100<span style="color: var(--cyan);">/</span>100</div>
+                    <h4 style="color: var(--cyan); letter-spacing: 2px; margin-bottom: 10px;">LIGHTHOUSE SCORE</h4>
+                    <p style="color: #555; font-size: 0.85rem; line-height: 1.6;">Zero-bloat engineering ensures your site remains in the top 1% of global web performance.</p>
+                </div>
+
+                <div style="padding: 20px;">
+                    <div style="font-size: 3rem; color: var(--white); font-weight: 800; margin-bottom: 10px;">99.9<span style="color: var(--cyan);">%</span></div>
+                    <h4 style="color: var(--cyan); letter-spacing: 2px; margin-bottom: 10px;">UPTIME GUARANTEE</h4>
+                    <p style="color: #555; font-size: 0.85rem; line-height: 1.6;">Leveraging globally distributed infrastructure to ensure your brand is always operational.</p>
+                </div>
+
+                <div style="padding: 20px;">
+                    <div style="font-size: 3rem; color: var(--white); font-weight: 800; margin-bottom: 10px;">A<span style="color: var(--cyan);">+</span></div>
+                    <h4 style="color: var(--cyan); letter-spacing: 2px; margin-bottom: 10px;">SECURITY RATING</h4>
+                    <p style="color: #555; font-size: 0.85rem; line-height: 1.6;">Hardened headers and enterprise-grade WAF protocols come standard with every Sentry build.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="reveal" style="padding: 100px 20px; background: #050505; border-top: 1px solid #1a1a1a;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px;">Investment Protocols</h2>
+            <p style="color: #666; margin-bottom: 60px; font-size: 1rem; letter-spacing: 1px;">STRATEGIC TIERS FOR SCALABLE GROWTH</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 40px; text-align: left; position: relative;">
+                    <span style="color: #555; font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: REVAMP ]</span>
+                    <h3 style="color: var(--white); margin-bottom: 10px;">Digital Hardening</h3>
+                    <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">Perfect for optimizing existing local brands and hospitality sites. We take your current infrastructure and harden it for speed and security.</p>
+                    <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px;">✓ Performance Optimization</li>
+                        <li style="margin-bottom: 10px;">✓ Security Header Hardening</li>
+                        <li style="margin-bottom: 10px;">✓ SEO Foundation Upgrade</li>
+                    </ul>
+                    <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Starting at $2,500</div>
+                </div>
+
+                <div style="background: #0d0d0d; border: 1px solid var(--cyan); padding: 40px; text-align: left; position: relative; box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);">
+                    <span style="color: var(--cyan); font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: BUILD ]</span>
+                    <h3 style="color: var(--white); margin-bottom: 10px;">Strategic Build</h3>
+                    <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">Ground-up engineering for medical practices and professional sectors. Built for absolute stability and maximum conversion.</p>
+                    <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px;">✓ 100/100 Lighthouse Deployment</li>
+                        <li style="margin-bottom: 10px;">✓ Enterprise Security Standard</li>
+                        <li style="margin-bottom: 10px;">✓ Custom Growth Strategy</li>
+                    </ul>
+                    <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Starting at $5,000</div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 40px; text-align: left; position: relative;">
+                    <span style="color: #555; font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: VECTOR ]</span>
+                    <h3 style="color: var(--white); margin-bottom: 10px;">Full-Spectrum Vector</h3>
+                    <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">A complete media and technical takeover. We manage your infrastructure and deploy aggressive growth media.</p>
+                    <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px;">✓ Ongoing Security Monitoring</li>
+                        <li style="margin-bottom: 10px;">✓ AI-Integrated Content Media</li>
+                        <li style="margin-bottom: 10px;">✓ Automation Management</li>
+                    </ul>
+                    <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Custom Quote</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal" style="background: #0d0d0d; padding: 100px 20px; border-top: 1px solid #1a1a1a;">
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px;">Initialize Project</h2>
+            <p style="color: #ccc; margin-bottom: 40px;">
+                Whether you need a ground-up build or an infrastructure revamp, contact us to deploy your next high-performance asset.
+            </p>
+            
+            <form action="https://formspree.io/f/mqeedyor" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <label for="name" class="sr-only">Name</label>
+                <input type="text" id="name" name="name" placeholder="Name" required style="background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 15px;">
+                
+                <label for="email" class="sr-only">Email</label>
+                <input type="email" id="email" name="email" placeholder="Business Email" required style="background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 15px;">
+                
+                <label for="message" class="sr-only">Message</label>
+                <textarea id="message" name="message" placeholder="Describe your project goals (New Build, Revamp, Security, etc.)" rows="4" style="background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 15px;"></textarea>
+                
+                <button type="submit" class="cta-button" style="width: 100%; border: 1px solid #00f2ff; color: #00f2ff; background: transparent; padding: 15px; cursor: pointer; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">
+                    SUBMIT PROTOCOL
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="reveal" style="background: #050505; padding: 60px 20px; border-top: 1px solid #00f2ff; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <img src="logo.svg" alt="Sentry Vector Media" style="width: 180px; height: auto; filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4)); margin-bottom: 25px;">
+            <p style="color: #666; font-size: 0.9rem; margin-bottom: 30px;">
+                Secure Digital Infrastructure & AI Media // Based in San Antonio, TX
+            </p>
+            
+            <div style="margin-bottom: 30px;">
+                <a href="https://tiktok.com/@yourhandle" style="color: #00f2ff; margin: 0 15px; text-decoration: none;">TIKTOK</a>
+                <a href="mailto:your-email@example.com" style="color: #00f2ff; margin: 0 15px; text-decoration: none;">EMAIL</a>
+                <a href="#" style="color: #00f2ff; margin: 0 15px; text-decoration: none;">LINKEDIN</a>
+            </div>
+
+            <p style="color: #333; font-size: 0.8rem;">
+                &copy; 2026 Sentry Vector Media. All Rights Reserved. <br>
+                Managed Security & Performance via Cloudflare.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
             }
         }
-    }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal); // Runs once on load
 
-    window.addEventListener("scroll", reveal);
-    window.addEventListener("load", reveal); // Runs it once immediately on page load
-</script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if(menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>
-
-<section id="work" class="reveal" style="padding: 100px 20px; background: #0a0a0a;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px; text-align: center;">Active Deployments</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px;">
-            
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 30px; border-top: 4px solid var(--cyan);">
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
-                    <span style="color: var(--cyan); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;">[ SECTOR: HEALTHCARE ]</span>
-                    <span style="color: #444; font-size: 0.8rem;">STATUS: OPERATIONAL</span>
-                </div>
-                <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 15px;">San Antonio Medical Practice</h3>
-                <p style="color: #888; line-height: 1.6; font-size: 0.95rem;">
-                    Complete infrastructure overhaul for a high-volume medical clinic. We engineered a secure, lightning-fast deployment that achieved 100/100 performance scores across all device types.
-                </p>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 30px; border-top: 4px solid var(--cyan);">
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
-                    <span style="color: var(--cyan); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;">[ SECTOR: HOSPITALITY ]</span>
-                    <span style="color: #444; font-size: 0.8rem;">STATUS: IN-DEVELOPMENT</span>
-                </div>
-                <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 15px;">Texas BBQ & Catering</h3>
-                <p style="color: #888; line-height: 1.6; font-size: 0.95rem;">
-                    Full-scale digital revamp focused on localized growth and conversion engineering. We are transitioning this brand into a custom-built infrastructure designed for rapid scaling and high-traffic events.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="about-preview" class="reveal" style="padding: 100px 20px; background: #080808; border-top: 1px solid #1a1a1a;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
-        
-        <div style="flex: 1; min-width: 300px;">
-            <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px;">The Sentry Standard</h2>
-            <p style="color: #ccc; font-size: 1.1rem; line-height: 1.7; margin: 20px 0;">
-                Sentry Vector Media was founded on a single principle: that high-end media shouldn't come at the cost of technical integrity. 
-            </p>
-            <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
-                Based in San Antonio, we specialize in bridging the gap between secure, hardened infrastructure and aggressive digital growth for professional practices and local brands.
-            </p>
-        </div>
-
-        <div style="flex: 1; min-width: 300px; display: grid; gap: 20px;">
-            <div style="background: rgba(255,255,255,0.03); padding: 25px; border-left: 2px solid var(--cyan);">
-                <strong style="color: var(--white); display: block; margin-bottom: 5px;">THE SENTRY PILLAR</strong>
-                <span style="color: #666; font-size: 0.85rem;">Security-first engineering. We protect your data and your reputation using enterprise-grade hardening protocols.</span>
-            </div>
-            <div style="background: rgba(255,255,255,0.03); padding: 25px; border-left: 2px solid var(--cyan);">
-                <strong style="color: var(--white); display: block; margin-bottom: 5px;">THE VECTOR PILLAR</strong>
-                <span style="color: #666; font-size: 0.85rem;">Performance-driven growth. We leverage AI-integrated media and high-speed stacks to outpace the competition.</span>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section id="case-study" class="reveal" style="background: #0d0d0d; padding: 100px 20px; color: #fff; border-top: 1px solid #333;">
-    <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
-        <div style="flex: 1; min-width: 300px;">
-            <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 2px;">Vector Case Study</h2>
-            <h3 style="font-size: 2rem; margin: 10px 0;">San Antonio NP Associates</h3>
-            <p style="color: #ccc; line-height: 1.6;">We re-engineered the digital presence for this medical practice to ensure peak performance and security. By optimizing the technical infrastructure, we achieved a perfect 100/100 Lighthouse score.</p>
-            <ul style="list-style: none; padding: 0; color: #00f2ff; font-weight: bold;">
-                <li>✓ HIPAA-Ready Security Layout</li>
-                <li>✓ Sub-1s Load Times</li>
-                <li>✓ 100% Mobile Optimization</li>
-            </ul>
-        </div>
-        <div style="flex: 1; min-width: 300px; border: 2px solid #00f2ff; border-radius: 8px; padding: 20px; background: #1a1a1a; text-align: center;">
-            <div style="font-size: 3rem; font-weight: bold; color: #00f2ff;">100/100</div>
-            <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Lighthouse SEO Score</div>
-        </div>
-    </div>
-</section>
-
-<section id="media" class="reveal" style="background: #1a1a1a; padding: 100px 20px; border-top: 1px solid #333;">
-    <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
-        <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px;">Media Production Vector</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-            
-            <div style="background: #0d0d0d; border: 1px solid #333; padding: 10px; border-radius: 8px;">
-                <div style="aspect-ratio: 9/16; background: #222; display: flex; align-items: center; justify-content: center; color: #444; margin-bottom: 15px;">
-                    <span>[ AI-GENERATED TIKTOK PREVIEW ]</span>
-                </div>
-                <h3 style="color: #fff; font-size: 1rem; letter-spacing: 1px;">ALGORITHM OPTIMIZED CONTENT</h3>
-                <p style="color: #666; font-size: 0.8rem;">Local AI workflows for rapid social media scaling.</p>
-            </div>
-
-            <div style="background: #0d0d0d; border: 1px solid #333; padding: 10px; border-radius: 8px;">
-                <div style="aspect-ratio: 9/16; background: #222; display: flex; align-items: center; justify-content: center; color: #444; margin-bottom: 15px;">
-                    <span>[ BRAND IDENTITY REEL ]</span>
-                </div>
-                <h3 style="color: #fff; font-size: 1rem; letter-spacing: 1px;">DATA-DRIVEN STORYTELLING</h3>
-                <p style="color: #666; font-size: 0.8rem;">Converting complex infrastructure into digestible media.</p>
-            </div>
-
-            <div style="background: #0d0d0d; border: 1px solid #333; padding: 10px; border-radius: 8px;">
-                <div style="aspect-ratio: 9/16; background: #222; display: flex; align-items: center; justify-content: center; color: #444; margin-bottom: 15px;">
-                    <span>[ MEDICAL SEO CASE STUDY ]</span>
-                </div>
-                <h3 style="color: #fff; font-size: 1rem; letter-spacing: 1px;">VERTICAL AUTHORITY</h3>
-                <p style="color: #666; font-size: 0.8rem;">High-retention video assets for professional services.</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="protocols" class="reveal" style="background: #050505; padding: 100px 20px; border-top: 1px solid #1a1a1a;">
-    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-        <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 50px;">Service Protocols</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            
-            <div style="background: #0d0d0d; border: 1px solid #333; padding: 40px; text-align: left; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
-                <h3 style="color: #00f2ff; letter-spacing: 2px;">01. WEB CREATION & REVAMPS</h3>
-                <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
-                    Moving beyond legacy builders. We transition brands from platforms like Squarespace to high-performance stacks optimized for San Antonio's local market.
-                </p>
-                <ul style="color: #777; font-size: 0.85rem; padding-left: 18px; line-height: 1.8;">
-                    <li>Strategic Platform Migration</li>
-                    <li>Mobile-First UX Engineering</li>
-                    <li>Localized SEO Integration</li>
-                </ul>
-            </div>
-
-            <div style="background: #0d0d0d; border: 1px solid #333; padding: 40px; text-align: left; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
-                <h3 style="color: #00f2ff; letter-spacing: 2px;">02. SENTRY HARDENING</h3>
-                <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
-                    Enterprise-grade security and performance. We protect professional practices with hardened infrastructure designed to achieve a 100/100 Lighthouse score.
-                </p>
-                <ul style="color: #777; font-size: 0.85rem; padding-left: 18px; line-height: 1.8;">
-                    <li>Cloudflare WAF Deployment</li>
-                    <li>SSL/TLS Protocol Optimization</li>
-                    <li>Indestructible Static Hosting</li>
-                </ul>
-            </div>
-
-            <div style="background: #0d0d0d; border: 1px solid #333; padding: 40px; text-align: left; transition: 0.3s;" onmouseover="this.style.borderColor='#00f2ff'" onmouseout="this.style.borderColor='#333'">
-                <h3 style="color: #00f2ff; letter-spacing: 2px;">03. DATA & MEDIA VECTORS</h3>
-                <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
-                    Accelerating brand reach through technical automation. We leverage custom Python tools and AI-integrated media to drive aggressive growth.
-                </p>
-                <ul style="color: #777; font-size: 0.85rem; padding-left: 18px; line-height: 1.8;">
-                    <li>AI Content Workflows</li>
-                    <li>Custom API & Tool Creation</li>
-                    <li>Algorithmic Strategy</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="guarantee" class="reveal" style="padding: 100px 20px; background: #050505; border-top: 1px solid #1a1a1a;">
-    <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
-        <h2 style="color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px;">Performance Standards</h2>
-        <p style="color: #666; margin-bottom: 60px; font-size: 1rem; letter-spacing: 1px;">MINIMUM OPERATIONAL REQUIREMENTS FOR ALL DEPLOYMENTS</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-            
-            <div style="padding: 20px;">
-                <div style="font-size: 3rem; color: var(--white); font-weight: 800; margin-bottom: 10px;">100<span style="color: var(--cyan);">/</span>100</div>
-                <h4 style="color: var(--cyan); letter-spacing: 2px; margin-bottom: 10px;">LIGHTHOUSE SCORE</h4>
-                <p style="color: #555; font-size: 0.85rem; line-height: 1.6;">Zero-bloat engineering ensures your site remains in the top 1% of global web performance.</p>
-            </div>
-
-            <div style="padding: 20px;">
-                <div style="font-size: 3rem; color: var(--white); font-weight: 800; margin-bottom: 10px;">99.9<span style="color: var(--cyan);">%</span></div>
-                <h4 style="color: var(--cyan); letter-spacing: 2px; margin-bottom: 10px;">UPTIME GUARANTEE</h4>
-                <p style="color: #555; font-size: 0.85rem; line-height: 1.6;">Leveraging globally distributed infrastructure to ensure your brand is always operational.</p>
-            </div>
-
-            <div style="padding: 20px;">
-                <div style="font-size: 3rem; color: var(--white); font-weight: 800; margin-bottom: 10px;">A<span style="color: var(--cyan);">+</span></div>
-                <h4 style="color: var(--cyan); letter-spacing: 2px; margin-bottom: 10px;">SECURITY RATING</h4>
-                <p style="color: #555; font-size: 0.85rem; line-height: 1.6;">Hardened headers and enterprise-grade WAF protocols come standard with every Sentry build.</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="reveal" style="background: #0d0d0d; padding: 100px 20px; border-top: 1px solid #1a1a1a;">
-    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-        <h2 style="color: #00f2ff; text-transform: uppercase; letter-spacing: 4px;">Initialize Project</h2>
-        <p style="color: #ccc; margin-bottom: 40px;">
-            Whether you need a ground-up build or an infrastructure revamp, contact us to deploy your next high-performance asset.
-        </p>
-        
-        <form action="https://formspree.io/f/mqeedyor" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="text" name="name" placeholder="Name" required style="background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 15px;">
-            <input type="email" name="email" placeholder="Business Email" required style="background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 15px;">
-            <textarea name="message" placeholder="Describe your project goals (New Build, Revamp, Security, etc.)" rows="4" style="background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 15px;"></textarea>
-            
-            <button type="submit" class="cta-button" style="width: 100%; border: 1px solid #00f2ff; color: #00f2ff; background: transparent; padding: 15px; cursor: pointer; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">
-                SUBMIT PROTOCOL
-            </button>
-        </form>
-    </div>
-</section>
-
-<footer class="reveal" style="background: #050505; padding: 60px 20px; border-top: 1px solid #00f2ff; text-align: center;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <img src="logo.svg" alt="Sentry Vector Media" style="width: 180px; height: auto; filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4)); margin-bottom: 25px;">
-        <p style="color: #666; font-size: 0.9rem; margin-bottom: 30px;">
-            Secure Digital Infrastructure & AI Media // Based in San Antonio, TX
-        </p>
-        
-        <div style="margin-bottom: 30px;">
-            <a href="https://tiktok.com/@yourhandle" style="color: #00f2ff; margin: 0 15px; text-decoration: none;">TIKTOK</a>
-            <a href="mailto:your-email@example.com" style="color: #00f2ff; margin: 0 15px; text-decoration: none;">EMAIL</a>
-            <a href="#" style="color: #00f2ff; margin: 0 15px; text-decoration: none;">LINKEDIN</a>
-        </div>
-
-        <p style="color: #333; font-size: 0.8rem;">
-            &copy; 2026 Sentry Vector Media. All Rights Reserved. <br>
-            Managed Security & Performance via Cloudflare.
-        </p>
-    </div>
-</footer>
