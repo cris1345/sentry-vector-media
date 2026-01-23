@@ -199,11 +199,13 @@
             border-top: 2px solid var(--cyan);
         }
 
-        .card h3 {
+        /* A11Y FIX: Changed selector from h3 to h2 to match HTML */
+        .card h2 {
             color: var(--cyan);
             letter-spacing: 2px;
             margin-bottom: 15px;
             text-transform: uppercase;
+            font-size: 1.5rem; /* Ensure size looks right */
         }
 
         .card p {
@@ -342,11 +344,11 @@
 
         <section class="philosophy">
             <div class="card reveal">
-                <h3>Sentry Pillar</h3>
+                <h2>Sentry Pillar</h2>
                 <p>We implement enterprise-grade security hardening standard on every build. Using Cloudflare WAF, SSL/TLS optimization, and indestructible hosting stacks to protect your brand's reputation.</p>
             </div>
             <div class="card reveal">
-                <h3>Vector Pillar</h3>
+                <h2>Vector Pillar</h2>
                 <p>Our media strategy is engineered for growth. We leverage custom Python automation and AI-integrated workflows to ensure your brand outpaces the market with speed and precision.</p>
             </div>
         </section>
