@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sentry Vector Media Protocols: Elite web development and security standards. 100/100 performance, enterprise hardening, and growth engineering tiers.">
     <title>Protocols | Sentry Vector Media</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
+    </noscript>
+    
     <style>
         :root {
             --cyan: #00f2ff;
@@ -45,7 +52,7 @@
             z-index: -1;
         }
 
-        /* Standardized Command Navbar */
+        /* GLOBAL NAVBAR STYLING */
         .navbar {
             position: fixed;
             top: 0;
@@ -69,7 +76,13 @@
         .nav-logo img {
             height: 55px;
             width: auto;
+            aspect-ratio: 180/55; /* CLS Fix */
             filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-logo img:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -84,23 +97,27 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             transition: 0.3s ease;
+            display: inline-block;
         }
 
         .nav-links a:hover {
             color: var(--cyan);
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
         }
 
         .nav-cta {
             border: 1px solid var(--cyan);
             padding: 10px 20px;
             border-radius: 2px;
+            background: transparent;
         }
 
         .nav-cta:hover {
             background: var(--cyan);
             color: var(--black) !important;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
         }
 
         .portal-btn {
@@ -114,10 +131,36 @@
             gap: 8px;
         }
 
-        /* Hero */
+        .portal-btn:hover {
+            background: rgba(0, 242, 255, 0.15);
+            border-color: var(--cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+
+        /* MOBILE MENU TOGGLE */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 2001;
+        }
+        .bar {
+            width: 30px;
+            height: 2px;
+            background-color: var(--cyan);
+            transition: 0.3s;
+        }
+
+        /* HERO */
         .hero {
             padding: 200px 20px 80px;
             text-align: center;
+            /* LCP Fix: Instant Load */
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero h1 {
@@ -125,9 +168,10 @@
             letter-spacing: 12px;
             text-transform: uppercase;
             margin-bottom: 20px;
+            line-height: 1.1;
         }
 
-        /* Protocols Content */
+        /* PROTOCOLS CONTENT */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -148,7 +192,7 @@
             margin-bottom: 20px;
         }
 
-        /* Pricing Tiers */
+        /* PRICING TIERS */
         .pricing-section {
             padding: 100px 0;
             text-align: center;
@@ -225,8 +269,17 @@
             padding: 80px 20px;
             text-align: center;
             border-top: 1px solid #1a1a1a;
+            background: var(--black);
         }
 
+        .footer-logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.2));
+        }
+
+        /* ANIMATION UTILS */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -237,102 +290,152 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .nav-container { padding: 0 20px; }
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #0d0d0d;
+                flex-direction: column;
+                justify-content: center;
+                border-left: 1px solid var(--cyan);
+                transition: 0.4s ease-in-out;
+                padding: 20px;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+            }
+            .nav-links.active { right: 0; }
+            
+            .hero h1 { font-size: 2.5rem; letter-spacing: 4px; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="logo.svg" alt="Sentry Vector Media">
+            <a href="index.html" class="nav-logo" aria-label="Sentry Vector Home">
+                <img src="Logo.svg" alt="Sentry Vector Media" width="180" height="55">
             </a>
+
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="portfolio.html">Deployments</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="protocols.html" style="color: var(--cyan);">Protocols</a> 
                 <a href="about.html">About</a>
                 <a href="faq.html">FAQ</a>
+                
                 <a href="index.html#contact" class="nav-cta">Initialize Project</a>
-                <a href="#" class="portal-btn"><span>&#128274;</span> Portal</a>
+                
+                <a href="#" class="portal-btn">
+                    <span style="font-size: 0.9rem;" aria-hidden="true">&#128274;</span> Portal
+                </a>
             </div>
         </div>
     </nav>
 
-    <header class="hero reveal">
-        <h1>Service Protocols</h1>
-        <p style="color: var(--cyan); letter-spacing: 4px; font-weight: 700;">ELITE INFRASTRUCTURE // AGGRESSIVE GROWTH</p>
-    </header>
+    <main>
 
-    <main class="container">
-        <section class="pillar-box reveal">
-            <h2>The Sentry Protocol (Security)</h2>
-            <p style="color: #bbb; font-size: 1.1rem;">
-                We deploy hardened digital infrastructure designed to protect professional reputations. For our San Antonio medical partners, absolute security is the baseline—not an optional upgrade.
-            </p>
-        </section>
+        <header class="hero">
+            <h1>Service Protocols</h1>
+            <p style="color: var(--cyan); letter-spacing: 4px; font-weight: 700;">ELITE INFRASTRUCTURE // AGGRESSIVE GROWTH</p>
+        </header>
 
-        <section class="pillar-box reveal" style="border-left-color: var(--white);">
-            <h2 style="color: var(--white);">The Vector Protocol (Performance)</h2>
-            <p style="color: #bbb; font-size: 1.1rem;">
-                Growth is engineered through technical velocity. Every build is optimized for a 100/100 performance rating to ensure your brand reaches its maximum market potential.
-            </p>
-        </section>
+        <div class="container">
+            <section class="pillar-box reveal">
+                <h2>The Sentry Protocol (Security)</h2>
+                <p style="color: #bbb; font-size: 1.1rem;">
+                    We deploy hardened digital infrastructure designed to protect professional reputations. For our San Antonio medical partners, absolute security is the baseline—not an optional upgrade.
+                </p>
+            </section>
 
-        <section class="pricing-section reveal">
-            <h2 style="text-transform: uppercase; letter-spacing: 4px;">Investment Tiers</h2>
-            <div class="pricing-grid">
-                
-                <div class="price-card">
-                    <h3>Digital Hardening</h3>
-                    <p style="color: #555; font-size: 0.85rem;">Infrastructure revamps for existing local brands.</p>
-                    <div class="price-tag">Starting at $2,500</div>
-                    <ul class="features">
-                        <li>✓ Performance Optimization</li>
-                        <li>✓ Security Header Hardening</li>
-                        <li>✓ SEO Foundation Upgrade</li>
-                    </ul>
-                    <a href="index.html#contact" class="initialize-btn">Initialize</a>
+            <section class="pillar-box reveal" style="border-left-color: var(--white);">
+                <h2 style="color: var(--white);">The Vector Protocol (Performance)</h2>
+                <p style="color: #bbb; font-size: 1.1rem;">
+                    Growth is engineered through technical velocity. Every build is optimized for a 100/100 performance rating to ensure your brand reaches its maximum market potential.
+                </p>
+            </section>
+
+            <section class="pricing-section reveal">
+                <h2 style="text-transform: uppercase; letter-spacing: 4px;">Investment Tiers</h2>
+                <div class="pricing-grid">
+                    
+                    <div class="price-card">
+                        <h3>Digital Hardening</h3>
+                        <p style="color: #555; font-size: 0.85rem;">Infrastructure revamps for existing local brands.</p>
+                        <div class="price-tag">Starting at $2,500</div>
+                        <ul class="features">
+                            <li>✓ Performance Optimization</li>
+                            <li>✓ Security Header Hardening</li>
+                            <li>✓ SEO Foundation Upgrade</li>
+                        </ul>
+                        <a href="index.html#contact" class="initialize-btn">Initialize</a>
+                    </div>
+
+                    <div class="price-card" style="border-color: var(--cyan); background: #080808; box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);">
+                        <h3>Strategic Build</h3>
+                        <p style="color: #555; font-size: 0.85rem;">Ground-up engineering for professional sectors.</p>
+                        <div class="price-tag">Starting at $5,000</div>
+                        <ul class="features">
+                            <li>✓ 100/100 Lighthouse Standard</li>
+                            <li>✓ Enterprise Security protocols</li>
+                            <li>✓ Advanced Conversion Vector</li>
+                        </ul>
+                        <a href="index.html#contact" class="initialize-btn" style="background: var(--cyan); color: var(--black);">Initialize</a>
+                    </div>
+
+                    <div class="price-card">
+                        <h3>Full Vector</h3>
+                        <p style="color: #555; font-size: 0.85rem;">Complete media and technical takeover.</p>
+                        <div class="price-tag">Custom Quote</div>
+                        <ul class="features">
+                            <li>✓ Managed Security Infrastructure</li>
+                            <li>✓ AI-Integrated Growth Media</li>
+                            <li>✓ Automated System Management</li>
+                        </ul>
+                        <a href="index.html#contact" class="initialize-btn">Initialize</a>
+                    </div>
+
                 </div>
-
-                <div class="price-card" style="border-color: var(--cyan); background: #080808; box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);">
-                    <h3>Strategic Build</h3>
-                    <p style="color: #555; font-size: 0.85rem;">Ground-up engineering for professional sectors.</p>
-                    <div class="price-tag">Starting at $5,000</div>
-                    <ul class="features">
-                        <li>✓ 100/100 Lighthouse Standard</li>
-                        <li>✓ Enterprise Security protocols</li>
-                        <li>✓ Advanced Conversion Vector</li>
-                    </ul>
-                    <a href="index.html#contact" class="initialize-btn" style="background: var(--cyan); color: var(--black);">Initialize</a>
-                </div>
-
-                <div class="price-card">
-                    <h3>Full Vector</h3>
-                    <p style="color: #555; font-size: 0.85rem;">Complete media and technical takeover.</p>
-                    <div class="price-tag">Custom Quote</div>
-                    <ul class="features">
-                        <li>✓ Managed Security Infrastructure</li>
-                        <li>✓ AI-Integrated Growth Media</li>
-                        <li>✓ Automated System Management</li>
-                    </ul>
-                    <a href="index.html#contact" class="initialize-btn">Initialize</a>
-                </div>
-
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <img src="logo.svg" alt="Sentry Vector Media" style="width: 160px; margin-bottom: 20px; opacity: 0.5;">
-        <p style="color: #333; font-size: 0.8rem; letter-spacing: 2px;">&copy; 2026 SENTRY VECTOR MEDIA // SAN ANTONIO, TX</p>
+        <img src="Logo.svg" alt="Sentry Vector Media" class="footer-logo" width="180" height="55">
+        <p style="color: #888; font-size: 0.8rem; letter-spacing: 1px;">&copy; 2026 SENTRY VECTOR MEDIA // SAN ANTONIO, TX // SECURE BY DESIGN.</p>
     </footer>
 
     <script>
+        // Scroll Reveal Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if(menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>
