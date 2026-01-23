@@ -103,7 +103,7 @@
             margin-bottom: 25px;
         }
 
-        /* BUTTONS */
+        /* STANDARD BUTTONS */
         .cta-button {
             display: inline-block;
             margin-top: 40px;
@@ -124,6 +124,47 @@
             background: var(--cyan);
             color: var(--black);
             box-shadow: 0 0 30px var(--cyan);
+        }
+
+        /* --- NEW TACTICAL ACTION BUTTONS (For Pricing) --- */
+        .action-btn {
+            display: block;
+            width: 100%;
+            padding: 16px 0;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 2rem;
+            
+            /* Ghost Button Default */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            background: transparent;
+        }
+
+        .action-btn:hover {
+            border-color: var(--cyan);
+            color: var(--black);
+            background: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+        }
+
+        /* Filled Button (Featured) */
+        .filled-btn {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .filled-btn:hover {
+            background: var(--cyan);
+            color: var(--black);
         }
 
         /* GLOBAL NAVBAR STYLING */
@@ -290,7 +331,8 @@
 
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="portfolio.html">Portfolio</a> <a href="protocols.html">Protocols</a> 
+                <a href="portfolio.html">Portfolio</a> 
+                <a href="protocols.html">Protocols</a> 
                 <a href="about.html">About</a>
                 <a href="faq.html">FAQ</a>
                 
@@ -520,40 +562,55 @@
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
                     
-                    <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 40px; text-align: left; position: relative;">
-                        <span style="color: #555; font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: REVAMP ]</span>
-                        <h3 style="color: var(--white); margin-bottom: 10px;">Digital Hardening</h3>
-                        <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">Perfect for optimizing existing local brands and hospitality sites. We take your current infrastructure and harden it for speed and security.</p>
-                        <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
-                            <li style="margin-bottom: 10px;">✓ Performance Optimization</li>
-                            <li style="margin-bottom: 10px;">✓ Security Header Hardening</li>
-                            <li style="margin-bottom: 10px;">✓ SEO Foundation Upgrade</li>
-                        </ul>
-                        <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Starting at $2,500</div>
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 40px; text-align: left; position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span style="color: #555; font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: REVAMP ]</span>
+                            <h3 style="color: var(--white); margin-bottom: 10px;">Digital Hardening</h3>
+                            <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">Perfect for optimizing existing local brands and hospitality sites. We take your current infrastructure and harden it for speed and security.</p>
+                            <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
+                                <li style="margin-bottom: 10px;">✓ Performance Optimization</li>
+                                <li style="margin-bottom: 10px;">✓ Security Header Hardening</li>
+                                <li style="margin-bottom: 10px;">✓ SEO Foundation Upgrade</li>
+                            </ul>
+                            <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Starting at $2,500</div>
+                        </div>
+                        <a href="/contact?plan=digital_hardening" class="action-btn">
+                            INITIATE PROTOCOL
+                        </a>
                     </div>
 
-                    <div style="background: #0d0d0d; border: 1px solid var(--cyan); padding: 40px; text-align: left; position: relative; box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);">
-                        <span style="color: var(--cyan); font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: BUILD ]</span>
-                        <h3 style="color: var(--white); margin-bottom: 10px;">Strategic Build</h3>
-                        <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">Ground-up engineering for medical practices and professional sectors. Built for absolute stability and maximum conversion.</p>
-                        <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
-                            <li style="margin-bottom: 10px;">✓ 100/100 Lighthouse Deployment</li>
-                            <li style="margin-bottom: 10px;">✓ Enterprise Security Standard</li>
-                            <li style="margin-bottom: 10px;">✓ Custom Growth Strategy</li>
-                        </ul>
-                        <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Starting at $5,000</div>
+                    <div style="background: #0d0d0d; border: 1px solid var(--cyan); padding: 40px; text-align: left; position: relative; box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span style="color: var(--cyan); font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: BUILD ]</span>
+                            <h3 style="color: var(--white); margin-bottom: 10px;">Strategic Build</h3>
+                            <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">Ground-up engineering for medical practices and professional sectors. Built for absolute stability and maximum conversion.</p>
+                            <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
+                                <li style="margin-bottom: 10px;">✓ 100/100 Lighthouse Deployment</li>
+                                <li style="margin-bottom: 10px;">✓ Enterprise Security Standard</li>
+                                <li style="margin-bottom: 10px;">✓ Custom Growth Strategy</li>
+                            </ul>
+                            <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Starting at $5,000</div>
+                        </div>
+                        <a href="/contact?plan=strategic_build" class="action-btn filled-btn">
+                            DEPLOY SYSTEM
+                        </a>
                     </div>
 
-                    <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 40px; text-align: left; position: relative;">
-                        <span style="color: #555; font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: VECTOR ]</span>
-                        <h3 style="color: var(--white); margin-bottom: 10px;">Full-Spectrum Vector</h3>
-                        <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">A complete media and technical takeover. We manage your infrastructure and deploy aggressive growth media.</p>
-                        <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
-                            <li style="margin-bottom: 10px;">✓ Ongoing Security Monitoring</li>
-                            <li style="margin-bottom: 10px;">✓ AI-Integrated Content Media</li>
-                            <li style="margin-bottom: 10px;">✓ Automation Management</li>
-                        </ul>
-                        <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Custom Quote</div>
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 40px; text-align: left; position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span style="color: #555; font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px;">[ CODE: VECTOR ]</span>
+                            <h3 style="color: var(--white); margin-bottom: 10px;">Full-Spectrum Vector</h3>
+                            <p style="color: #888; font-size: 0.9rem; margin-bottom: 25px;">A complete media and technical takeover. We manage your infrastructure and deploy aggressive growth media.</p>
+                            <ul style="color: #ccc; font-size: 0.9rem; list-style: none; padding: 0; margin-bottom: 30px;">
+                                <li style="margin-bottom: 10px;">✓ Ongoing Security Monitoring</li>
+                                <li style="margin-bottom: 10px;">✓ AI-Integrated Content Media</li>
+                                <li style="margin-bottom: 10px;">✓ Automation Management</li>
+                            </ul>
+                            <div style="color: var(--cyan); font-size: 1.5rem; font-weight: 700;">Custom Quote</div>
+                        </div>
+                        <a href="/contact?plan=full_spectrum" class="action-btn">
+                            REQUEST INTEL
+                        </a>
                     </div>
 
                 </div>
@@ -584,7 +641,9 @@
             </div>
         </section>
 
-    </main> <footer class="reveal" style="background: #050505; padding: 60px 20px; border-top: 1px solid #00f2ff; text-align: center;">
+    </main> 
+    
+    <footer class="reveal" style="background: #050505; padding: 60px 20px; border-top: 1px solid #00f2ff; text-align: center;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <img src="Logo.svg" alt="Sentry Vector Media" style="width: 180px; height: auto; filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4)); margin-bottom: 25px;" width="180" height="55">
             <p style="color: #666; font-size: 0.9rem; margin-bottom: 30px;">
