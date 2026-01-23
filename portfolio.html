@@ -76,7 +76,7 @@
         .nav-logo img {
             height: 55px;
             width: auto;
-            /* Added explicit aspect ratio for CLS Score */
+            /* CLS Fix */
             aspect-ratio: 180/55; 
             filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -159,7 +159,6 @@
         .portfolio-hero {
             padding: 180px 20px 80px;
             text-align: center;
-            /* REMOVED 'opacity: 0' to fix LCP Score */
             opacity: 1; 
             transform: translateY(0);
         }
@@ -202,7 +201,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #444;
+            color: #888; /* CONTRAST FIX: Lightened from #444 */
             font-size: 0.9rem;
         }
 
@@ -240,7 +239,7 @@
         }
 
         .stat-label {
-            color: #666;
+            color: #aaa; /* CONTRAST FIX: Lightened from #666 */
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -266,7 +265,6 @@
 
         .footer-logo {
             width: 180px;
-            /* Explicit height for CLS Fix */
             height: auto; 
             margin-bottom: 30px;
             filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.2));
@@ -316,7 +314,7 @@
 
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="portfolio.html">Deployments</a>
+                <a href="portfolio.html">Portfolio</a>
                 <a href="protocols.html">Protocols</a> 
                 <a href="about.html">About</a>
                 <a href="faq.html">FAQ</a>
@@ -331,7 +329,7 @@
     </nav>
 
     <main>
-
+        
         <section class="portfolio-hero">
             <h1>Technical Registry</h1>
             <p>HIGH-PERFORMANCE DEPLOYMENTS & INFRASTRUCTURE REVAMPS</p>
@@ -387,7 +385,7 @@
             <a href="#" style="color: var(--cyan); margin: 0 15px; text-decoration: none;">TIKTOK</a>
             <a href="#" style="color: var(--cyan); margin: 0 15px; text-decoration: none;">LINKEDIN</a>
         </div>
-        <p style="color: #444; font-size: 0.8rem; letter-spacing: 1px;">
+        <p style="color: #888; font-size: 0.8rem; letter-spacing: 1px;">
             &copy; 2026 SENTRY VECTOR MEDIA // SECURE INFRASTRUCTURE // SAN ANTONIO, TX
         </p>
     </footer>
