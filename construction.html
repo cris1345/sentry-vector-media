@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentry Vector | Deployment in Progress</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* TACTICAL GRID BACKGROUND */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        h1 {
+            color: #00f2ff;
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
+
+        p {
+            color: #888;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            max-width: 600px;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+
+        /* LOADING BAR ANIMATION */
+        .loader-container {
+            width: 300px;
+            height: 4px;
+            background: #1a1a1a;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .loader-bar {
+            width: 50%;
+            height: 100%;
+            background: #00f2ff;
+            position: absolute;
+            animation: load 2s infinite ease-in-out;
+            box-shadow: 0 0 10px #00f2ff;
+        }
+
+        @keyframes load {
+            0% { left: -50%; }
+            100% { left: 100%; }
+        }
+
+        .status-badge {
+            border: 1px solid #ffaa00;
+            color: #ffaa00;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            display: inline-block;
+            background: rgba(255, 170, 0, 0.05);
+        }
+
+        .back-btn {
+            margin-top: 40px;
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid #333;
+            padding: 12px 30px;
+            transition: 0.3s;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        .back-btn:hover {
+            border-color: #00f2ff;
+            color: #00f2ff;
+            background: rgba(0, 242, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="status-badge">⚠ SYSTEM STATUS: DEVELOPMENT MODE</div>
+
+    <h1>Asset Under Construction</h1>
+    
+    <div class="loader-container">
+        <div class="loader-bar"></div>
+    </div>
+
+    <p>
+        This digital asset is currently being engineered. 
+        Full deployment is scheduled for Q1 2026.
+    </p>
+
+    <a href="portfolio.html" class="back-btn">RETURN TO ARCHIVE</a>
+
+</body>
+</html>
