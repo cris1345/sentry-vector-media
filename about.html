@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Sentry Vector Media: San Antonio's premier high-performance web engineering and security hardening firm.">
+    <meta name="description"
+        content="About Sentry Vector Media: San Antonio's premier high-performance web engineering and security hardening firm.">
     <title>About | Sentry Vector Media</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap"
+        media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap">
     </noscript>
-    
+
     <style>
         :root {
             --cyan: #00f2ff;
@@ -45,14 +49,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: -1;
         }
 
-        /* GLOBAL NAVBAR STYLING */
+        /* NAVBAR */
         .navbar {
             position: fixed;
             top: 0;
@@ -76,7 +80,7 @@
         .nav-logo img {
             height: 55px;
             width: auto;
-            aspect-ratio: 180/55; /* CLS Fix */
+            aspect-ratio: 180/55;
             filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -147,6 +151,7 @@
             border: none;
             z-index: 2001;
         }
+
         .bar {
             width: 30px;
             height: 2px;
@@ -160,7 +165,6 @@
             text-align: center;
             max-width: 1000px;
             margin: 0 auto;
-            /* LCP Fix: Ensure instant visibility */
             opacity: 1;
             transform: translateY(0);
         }
@@ -199,13 +203,12 @@
             border-top: 2px solid var(--cyan);
         }
 
-        /* A11Y FIX: Changed selector from h3 to h2 to match HTML */
         .card h2 {
             color: var(--cyan);
             letter-spacing: 2px;
             margin-bottom: 15px;
             text-transform: uppercase;
-            font-size: 1.5rem; /* Ensure size looks right */
+            font-size: 1.5rem;
         }
 
         .card p {
@@ -213,7 +216,7 @@
             font-size: 1rem;
         }
 
-        /* ENGINEER SPOTLIGHT */
+        /* ENGINEER PROFILE SECTION (Updated) */
         .engineer-section {
             background: #080808;
             padding: 100px 40px;
@@ -230,15 +233,73 @@
             align-items: center;
         }
 
-        .engineer-text {
+        /* NEW PHOTO FRAME CSS */
+        .photo-frame {
             flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .photo-border {
+            border: 1px solid var(--cyan);
+            padding: 10px;
+            background: rgba(0, 242, 255, 0.02);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-border:hover {
+            transform: scale(1.02);
+        }
+
+        /* Corner Accents */
+        .photo-border::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 20px;
+            height: 20px;
+            border-top: 3px solid var(--cyan);
+            border-left: 3px solid var(--cyan);
+        }
+
+        .photo-border::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 3px solid var(--cyan);
+            border-right: 3px solid var(--cyan);
+        }
+
+        .photo-border img {
+            width: 100%;
+            display: block;
+            filter: grayscale(100%) contrast(1.1);
+            /* Black & White Effect */
+            transition: 0.5s ease;
+        }
+
+        .photo-border:hover img {
+            filter: grayscale(0%);
+            /* Color on Hover */
+        }
+
+        /* TEXT STYLES */
+        .engineer-text {
+            flex: 1.5;
             min-width: 300px;
         }
 
         .engineer-text h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 10px;
             color: var(--white);
+            line-height: 1;
+            text-transform: uppercase;
         }
 
         .engineer-text .title {
@@ -247,6 +308,35 @@
             font-weight: 700;
             margin-bottom: 25px;
             display: block;
+        }
+
+        .engineer-text p {
+            color: #bbb;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            border-top: 1px solid #222;
+            padding-top: 30px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .check {
+            color: var(--cyan);
         }
 
         /* FOOTER */
@@ -270,6 +360,7 @@
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -277,9 +368,14 @@
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 900px) {
-            .nav-container { padding: 0 20px; }
-            .menu-toggle { display: flex; }
-            
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -292,16 +388,34 @@
                 border-left: 1px solid var(--cyan);
                 transition: 0.4s ease-in-out;
                 padding: 20px;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
             }
-            .nav-links.active { right: 0; }
-            
-            .about-hero h1 { font-size: 2.5rem; letter-spacing: 4px; }
-            .philosophy { padding: 0 20px; }
-            .engineer-container { flex-direction: column; }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .philosophy {
+                padding: 0 20px;
+            }
+
+            .engineer-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .photo-frame {
+                width: 100%;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -309,22 +423,16 @@
             <a href="index.html" class="nav-logo" aria-label="Sentry Vector Home">
                 <img src="Logo.svg" alt="Sentry Vector Media" width="180" height="55">
             </a>
-
             <button class="menu-toggle" aria-label="Toggle Navigation">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </button>
-
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="portfolio.html">Portfolio</a>
-                <a href="protocols.html">Protocols</a> 
+                <a href="protocols.html">Protocols</a>
                 <a href="about.html" style="color: var(--cyan);">About</a>
                 <a href="faq.html">FAQ</a>
-                
                 <a href="index.html#contact" class="nav-cta">Initialize Project</a>
-                
                 <a href="#" class="portal-btn">
                     <span style="font-size: 0.9rem;" aria-hidden="true">&#128274;</span> Portal
                 </a>
@@ -338,50 +446,83 @@
             <div class="motto">Secure by Design. Driven by Data.</div>
             <h1>THE SENTRY STANDARD</h1>
             <p style="color: #bbb; font-size: 1.2rem; line-height: 1.8;">
-                Sentry Vector Media was founded in San Antonio to bridge the gap between technical infrastructure and high-impact media. We believe that high-performance growth shouldn't come at the cost of your digital security.
+                Sentry Vector Media was founded in San Antonio to bridge the gap between technical infrastructure and
+                high-impact media. We believe that high-performance growth shouldn't come at the cost of your digital
+                security.
             </p>
         </header>
 
         <section class="philosophy">
             <div class="card reveal">
                 <h2>Sentry Pillar</h2>
-                <p>We implement enterprise-grade security hardening standard on every build. Using Cloudflare WAF, SSL/TLS optimization, and indestructible hosting stacks to protect your brand's reputation.</p>
+                <p>We implement enterprise-grade security hardening standard on every build. Using Cloudflare WAF,
+                    SSL/TLS optimization, and indestructible hosting stacks to protect your brand's reputation.</p>
             </div>
             <div class="card reveal">
                 <h2>Vector Pillar</h2>
-                <p>Our media strategy is engineered for growth. We leverage custom Python automation and AI-integrated workflows to ensure your brand outpaces the market with speed and precision.</p>
+                <p>Our media strategy is engineered for growth. We leverage custom Python automation and AI-integrated
+                    workflows to ensure your brand outpaces the market with speed and precision.</p>
             </div>
         </section>
 
         <section class="engineer-section">
             <div class="engineer-container reveal">
-                <div style="flex: 0 0 320px; height: 400px; background: #111; border: 1px solid var(--cyan); box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <div style="position: absolute; top: 10px; left: 10px; color: var(--cyan); font-size: 0.7rem; font-weight: bold;">[ IDENTITY VERIFIED ]</div>
-                    <div style="color: #333; font-size: 0.8rem; text-align: center; padding: 20px;">
-                        LEAD_ENGINEER_VISUAL<br>SYSTEMS_OPERATIONAL
+
+                <div class="photo-frame">
+                    <div class="photo-border">
+                        <img src="cris-web-pic.webp" alt="Cris - Sentry Vector Lead">
+                    </div>
+                    <div
+                        style="text-align: center; margin-top: 15px; color: var(--cyan); font-size: 0.8rem; letter-spacing: 2px;">
+                        [ IDENTITY VERIFIED ]
                     </div>
                 </div>
 
                 <div class="engineer-text">
-                    <h2>The Architect</h2>
-                    <span class="title">FULL-STACK STRATEGIST // SECURITY LEAD</span>
-                    
-                    <p style="color: #bbb; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.7;">
-                        I specialize in engineering high-performance digital assets that serve as the indestructible backbone for professional brands. 
-                        My focus is on bridging the gap between absolute data security and aggressive market growth, ensuring your infrastructure is optimized for long-term stability.
-                    </p>
-                    
-                    <p style="color: #888; font-size: 1rem; line-height: 1.6;">
-                        By prioritizing technical integrity and conversion-ready design, I help San Antonio's medical and local business sectors outpace their competition. 
-                        Whether we are launching a new project from the ground up or performing a total infrastructure revamp, the objective remains constant: delivering elite digital solutions that work as hard as you do.
+                    <div class="title">LEAD OPERATOR // FOUNDER</div>
+                    <h2>Cris</h2>
+
+                    <p>
+                        My approach to digital infrastructure is grounded in a simple philosophy: <strong>systems should
+                            be built to last.</strong>
+                        I’m not a typical web designer chasing trends. My background is in systems engineering and
+                        practical problem-solving.
+                        I view every website as a piece of machinery—if the gears aren't precision-engineered, the
+                        machine eventually breaks.
                     </p>
 
-                    <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
-                        <span style="border: 1px solid #333; padding: 5px 12px; font-size: 0.7rem; color: #888; letter-spacing: 1px;">SECURE DEPLOYMENTS</span>
-                        <span style="border: 1px solid #333; padding: 5px 12px; font-size: 0.7rem; color: #888; letter-spacing: 1px;">PERFORMANCE HARDENING</span>
-                        <span style="border: 1px solid #333; padding: 5px 12px; font-size: 0.7rem; color: #888; letter-spacing: 1px;">GROWTH ENGINEERING</span>
+                    <p>
+                        I founded Sentry Vector here in San Antonio because I saw a critical gap in the market.
+                        Too many local businesses were being sold "pretty" websites that were technically fragile.
+                        I apply a <strong>blue-collar work ethic</strong> to the digital space—I don't believe in
+                        shortcuts, black-box solutions, or fragile code.
+                        I believe in building fortifications that stand up to the modern threat landscape.
+                    </p>
+
+                    <p
+                        style="color: #888; border-left: 2px solid #333; padding-left: 15px; margin-top: 25px; font-style: italic;">
+                        "Off the clock, you’ll usually find me fine-tuning high-gain guitar rigs or pushing PC hardware
+                        to its absolute limits.
+                        Whether it's code, hardware, or machine optimization, I am obsessed with the details that others
+                        overlook.
+                        I dissect how things work until I understand them completely—and then I make them work better."
+                    </p>
+
+                    <div class="skill-grid">
+                        <div class="skill-item"><span class="check">✓</span> Systems Architecture</div>
+                        <div class="skill-item"><span class="check">✓</span> Linux Administration</div>
+                        <div class="skill-item"><span class="check">✓</span> Technical SEO</div>
+                        <div class="skill-item"><span class="check">✓</span> Risk Analysis</div>
+                    </div>
+
+                    <div style="margin-top: 40px;">
+                        <a href="contact.html?plan=general"
+                            style="text-decoration: none; border: 1px solid var(--cyan); color: var(--cyan); padding: 12px 30px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s;">
+                            Establish Comms
+                        </a>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -408,11 +549,12 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
 
-        if(menuToggle) {
+        if (menuToggle) {
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
             });
         }
     </script>
 </body>
+
 </html>
